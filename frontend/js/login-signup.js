@@ -21,4 +21,11 @@ formSignup.addEventListener("submit", (e) => {
     signRePass: document.getElementById("sign-re-password").value.trim(),
     invalidpassword: document.getElementById("invalidpass")
   }
+  if (signPassword !== signRePass) {
+    invalidPass.textContent = "Passwords do not match";
+    return;
+  } else {
+    invalidPass.textContent = "";
+  }
+
 });

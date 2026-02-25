@@ -13,13 +13,8 @@ document.getElementById("applybtn").addEventListener("click", () => {
   window.location.href = "./html/userInrollForm.html";
 });
 
-menuBtn.addEventListener("click", () => {
-  if (navSmall.style.transform === "translateX(0%)") {
-    navSmall.style.transform = "translateX(100%)";
-  } else {
-    navSmall.style.transform = "translateX(0%)";
-  }
-
+document.getElementById("bar").addEventListener("click", () => {
+  document.querySelector(".mobileRes").classList.toggle("show");
 });
 
 fetch("companies.json")
@@ -42,3 +37,26 @@ fetch("companies.json")
       container.appendChild(card);
     });
   });
+
+
+const track = document.querySelector('.carousel-track')
+const nextbtn = document.querySelector('.next')
+const prevbtn = document.querySelector('.prev')
+
+let index = 0;
+const visibalCards = 4;
+const totalCards = document.querySelectorAll(".card").length;
+
+nextbtn.addEventListener("click", ()=>{
+  if(index < totalCards-visibalCards){
+    index++;
+    track.style.transform = `translateX(-${index *(100/visibalCards)}%)`;
+  }
+});
+
+prevbtn.addEventListener("click", ()=>{
+  if(index >0){
+    index--;
+    track.style.transform = `translateX(-${index *(100/visibalCards)}%)`;
+  }
+});

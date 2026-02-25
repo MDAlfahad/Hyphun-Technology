@@ -33,21 +33,31 @@
           hidden
         />
         <label class="label" for="imageupload"> Edit</label>
-        <div id="profileDetails" class="profileDetails">
-
-        </div>
+        <div id="profileDetails" class="profileDetails"></div>
         <button id="logout">Logout</button>
       </div>
-      <div class="datas">
-        <div class="box">
-          <div class="jobtable">
-            <h1>Position</h1>
-            <h1>Apply Date</h1>
-            <h1>Position</h1>
-            <h1>Delete</h1>
-          </div>
-          <div  id="jobFormData"></div>
-        </div>
+      <div style="width: 100%; height: 100vh; overflow-y: auto;">
+        
+       <div class="table-wrapper">
+         <table class="form-show">
+        <thead class="form-box">
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Submition date</th>
+            <th>Approve</th>
+          </tr>
+        </thead>
+        <tbody class="form-box2">
+          <tr>
+            <td id="form-name">Alfahad</td>
+            <td id="form-position">Frontend Developer</td>
+            <td id="form-date">20/02/2026</td>
+            <td id="form-approve">Approved</td>
+          </tr>
+        </tbody>
+      </table>
+       </div>
       </div>
     </section>
 

@@ -49,12 +49,12 @@ span {
   font-size: 25px;
 }
 
-.dash a {
+.dash p {
   font-size: 16px;
   padding: 1rem;
 }
 
-.dash a:active {
+.dash p:active {
   background: rgb(0, 145, 175);
 }
 
@@ -70,11 +70,11 @@ span {
   padding: 1rem 0;
 }
 
-.links a {
+.links p {
   padding: 1rem;
 }
 
-.links a:active {
+.links p:active {
   background: rgb(0, 145, 175);
 }
 
@@ -192,9 +192,174 @@ span i {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2.5rem;
+  padding: 1rem 200px;
   background: rgb(0, 145, 175);
   color: white;
   font-weight: 500;
   font-size: 14px;
+}
+.form-details{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-show {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+.form-box thread {
+  text-align: left;
+}
+.form-box th{
+  background: rgb(0, 145, 175);
+}
+.form-box th,
+.form-box2 td {
+    padding: 12px 15px;
+    border-bottom: 1px solid gray;
+   
+}
+.form-box2 td {
+    border-bottom: 1px solid gray;
+}
+
+
+.form-box tbody tr:last-of-type {
+    border-bottom: 2px solid #4CAF50;
+}
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.content-section{
+display: none;
+}
+.content-section.active{
+  display: flex;
+}
+
+
+
+/* --------------responsive designs--------------------------- */
+
+
+@media (max-width: 1024px) {
+
+  .left-container {
+    width: 250px;
+  }
+
+  .dashboard-container {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 15px;
+  }
+
+  .box,
+  .box1,
+  .box2 {
+    width: 48%;
+    height: 150px;
+  }
+
+  .navbar {
+    padding: 1rem 40px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+
+  .adminDashboard {
+    flex-direction: column;
+  }
+
+  .left-container {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .dash,
+  .links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dash p,
+  .links p {
+    font-size: 14px;
+    padding: .6rem;
+  }
+
+
+  .dashboard-container {
+    flex-direction: column;
+    height: auto;
+    gap: 15px;
+  }
+
+  .box,
+  .box1,
+  .box2 {
+    width: 100%;
+    height: auto;
+  }
+
+
+  .navbar {
+    padding: 1rem;
+    font-size: 13px;
+    text-align: center;
+    width: 100%;
+  }
+
+
+  .filter-bar {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .filter-bar span {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .dash p,
+  .links p {
+    font-size: 12px;
+    padding: .4rem;
+  }
+
+  .navbar {
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .dashboard-container h1 {
+    font-size: 18px;
+  }
+
+  .dashboard-container p {
+    font-size: 22px;
+  }
+  .filter-bar select{
+    width: 100%;
+    background: transparent;
+  }
+  .links h2 {
+    display: none;
+  }
+
 }
