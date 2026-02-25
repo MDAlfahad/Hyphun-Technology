@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/UserInrollForm.css" />
+
+    <!-- -----------font awesome cdn-------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section>
+      
+      <div class="form">
+        <h1>Job Application Form</h1>
+
+        <form action="submit" id="form" class="form-box">
+          <label for="name">name</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+          <label for="selctitem">Application For</label>
+          <select id="selctitem" required class="input">
+            <option value="" >none</option>
+            <option value="job">Job Application</option>
+            <option value="placement">Placement application</option>
+          </select>
+          <label for="position">position</label>
+          <select id="position" required class="input">
+            <option value="" >none</option>
+            <option value="frontend">Frontend Developer</option>
+            <option value="backend">backend Developer</option>
+            <option value="fullstack">fullstack Developer</option>
+            <option value="uiux">UI/UX</option>
+            <option value="appdev">App Developer</option>
+          </select>
+
+
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" required />
+
+          <label for="landmark">Landmark</label>
+          <input type="text" id="landmark" name="landmark" required />
+
+          <label for="address">address</label>
+          <input id="address" type="text" name="address" maxlength="200" />
+
+          <label for="birthdate">Birth Date</label>
+          <input type="date" id="birthdate" name="birthdate" required />
+
+          <label for="tel">Mobile Number</label>
+          <input type="tel" id="tel" name="mobile" required />
+            <div style="border: 1px solid gray; padding: .5rem;">
+                <label for="Choosefile">Upload your file</label>
+          <input type="file" id="choosefile"  />
+            </div>
+
+          <div style="display: flex;">
+            <input type="checkbox" id="policy" style="width: 20px; padding: 1rem;" required/>
+            <p style="padding: 4rem 1rem 4rem 1rem">
+              I hereby declare that the Give Information is Correct and Ceheck,
+              If the Inform is Not Correct the action should be taken on the
+              person that fill the form.
+            </p>
+          </div>
+          <button type="submit">Submit Form</button>
+        </form>
+      </div>
+    </section>
+
+    <script src="../js/userInrollForm.js"></script>
+  </body>
+</html>

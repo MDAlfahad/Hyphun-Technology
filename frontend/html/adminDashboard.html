@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/adminDashboard.css" />
+
+  <!-- -----------font awesome cdn-------------- -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+
+  <!-- ---------------------font google----------------------------->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+</head>
+
+<body>
+  <section class="adminDashboard">
+    <div class="left-container">
+      <div class="dash">
+        <p id="username"><span>User,</span></p>
+        <hr style="
+              width: 100%;
+              height: 1px;
+              background: rgb(219, 219, 219);
+              margin: 5px 0;
+            " />
+        <a id="dashboard">dashboard</a>
+      </div>
+
+      <div class="links">
+        <h2>ELEMENTS</h2>
+        <hr style="
+              width: 100%;
+              height: 1px;
+              background: rgb(219, 219, 219);
+              margin: 10px 0;
+            " />
+        <a id="tables">Tables</a>
+        <a id="form">Forms</a>
+        <a id="users">Users</a>
+        <a id="studentlist">Student Lists</a>
+        <a id="logOutbtn">logout</a>
+      </div>
+    </div>
+
+    <div class="right-container">
+      <div class="dashboard-container" id="dashboard-container">
+        <div class="box">
+          <h1>Total Users</h1>
+          <p id="totalUser">1000</p>
+          <a href="">Check Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="box1">
+          <h1>Total Application</h1>
+          <p id="totalUser">1000</p>
+          <a href="">Check Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="box2">
+          <h1>Total Forms</h1>
+          <p id="totalUser">1000</p>
+          <a href="">Check Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="form-details">
+          <div class="filter-bar">
+            <span><input type="search" placeholder="Search here"><i class="fa-brands fa-sistrix"></i></span>
+            <select name="select" id="select">
+              <option value="select">position</option>
+              <option value="frontend">Frontend</option>
+              <option value="frontend">Backend</option>
+              <option value="frontend">MERN Stack</option>
+              <option value="frontend">Ui/UX</option>
+              <option value="frontend">Web Development</option>
+            </select>
+            <select name="approv" id="approved" >
+              <option value="select">Select</option>
+              <option value="select">Approved</option>
+              <option value="select">Not Approved</option>
+
+            </select>
+          </div>
+
+          <div class="navbar">
+            <p id="sno">S.No</p>
+            <p id="name">Name</p>
+            <p id="postion">Position</p>
+            <p id="submitiondate">Submition date</p>
+            <p id="approve">Approve</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <script src="../js/adminBashboard.js"></script>
+</body>
+
+</html>

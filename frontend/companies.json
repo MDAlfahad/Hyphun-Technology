@@ -1,0 +1,82 @@
+[
+  {
+    "companyName": "TechNova Solutions",
+    "description": "A fast-growing software development company specializing in web apps, AI tools, and cloud solutions.",
+    "positionsRequired": [
+      "Frontend Developer (React)",
+      "Backend Developer (Node.js)",
+      "UI/UX Designer",
+      "QA Tester"
+    ]
+  },
+  {
+    "companyName": "DataSphere Analytics",
+    "description": "A data science company focused on machine learning models and business analytics.",
+    "positionsRequired": [
+      "Data Analyst",
+      "Machine Learning Engineer",
+      "Python Developer",
+      "Data Visualization Specialist"
+    ]
+  },
+  {
+    "companyName": "CloudNest Technologies",
+    "description": "Provides cloud computing and DevOps services for startups and enterprises.",
+    "positionsRequired": [
+      "DevOps Engineer",
+      "Cloud Engineer (AWS/Azure)",
+      "System Administrator",
+      "Network Security Engineer"
+    ]
+  },
+  {
+    "companyName": "CyberShield Security",
+    "description": "Cybersecurity firm offering penetration testing and digital security solutions.",
+    "positionsRequired": [
+      "Ethical Hacker",
+      "Cybersecurity Analyst",
+      "Security Consultant",
+      "SOC Analyst"
+    ]
+  },
+  {
+    "companyName": "PixelCraft Studios",
+    "description": "Creative digital agency for website design, branding, and marketing.",
+    "positionsRequired": [
+      "Graphic Designer",
+      "UI/UX Designer",
+      "Frontend Developer",
+      "Motion Designer"
+    ]
+  },
+  {
+    "companyName": "InnovateX Robotics",
+    "description": "Develops IoT devices, robotics automation, and smart hardware systems.",
+    "positionsRequired": [
+      "Embedded Systems Engineer",
+      "IoT Developer",
+      "Robotics Engineer",
+      "Hardware Design Engineer"
+    ]
+  },
+  {
+    "companyName": "FinEdge Solutions",
+    "description": "Fintech company building digital payment and banking platforms.",
+    "positionsRequired": [
+      "Java Developer",
+      "Mobile App Developer (Flutter)",
+      "Database Administrator",
+      "Product Manager"
+    ]
+  },
+  {
+    "companyName": "FinEdge Solutions",
+    "description": "Fintech company building digital payment and banking platforms.",
+    "positionsRequired": [
+      "Java Developer",
+      "Mobile App Developer (Flutter)",
+      "Database Administrator",
+      "Product Manager"
+    ]
+  }
+]

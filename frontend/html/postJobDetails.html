@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Post | Give job to People</title>
+    <link rel="stylesheet" href="../css/postJobDetails.css" />
+
+    <!-- -----------font awesome cdn-------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <!-- ---------------------font google----------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="container" id="joblist">
+      <form action="submit" id="jobform" style="display: none">
+        <h1>Fill Requirements</h1>
+
+        <label for="title">Title</label>
+        <input type="text" id="title" required />
+
+        <label for="companyName">Company name</label>
+        <input type="text" id="companyName" required />
+
+        <label for="experience">Experience</label>
+        <input type="text" id="experience" required />
+        <label for="job-type">Job Type</label>
+        <select name="Job-Type" id="jobType">
+          <option value="">Select Job Type</option>
+          <option value="partTime">Part-Time</option>
+          <option value="fullTime">Full-Time</option>
+          <option value="remote">Remote</option>
+        </select>
+        <label for="location">Location</label>
+        <input type="text" id="location" required />
+
+        <label for="startDate">Start Date</label>
+        <input type="text" id="startDate" required />
+
+        <label for="package">CTC (ANNUAL)</label>
+        <input type="text" id="package" required />
+        <label for="applydate">Apply Date</label>
+        <input type="text" id="applydate" required />
+
+        <label for="skills">Skills</label>
+        <input type="text" id="skills" required />
+
+        <label for="description"> Description </label>
+        <textarea id="description" type="text" required></textarea>
+
+        <label for="aboutcompany"> About this Company </label>
+        <textarea id="aboutcompany" type="text" required></textarea>
+
+        <label for="requirement">Other Requirement</label>
+        <textarea name="requirement" id="requirement" type="text"></textarea>
+        <div class="btn">
+          <button id="closebtn">close</button>
+          <button id="button" type="submit">Submit</button>
+        </div>
+      </form>
+      <!-- ----------- posted job view-------------------- -->
+      <div class="selection">
+        <div class="search">
+          <input type="search" id ='searchbar' placeholder="Search Job" />
+          <i class="fa-brands fa-sistrix"></i>
+        </div>
+        <select name="location" id="jobTypeFilter" class="input">
+          
+
+          <option value="">Job Type</option>
+          <option value="fullTime">Full time</option>
+          <option value="partTime">Part Time</option>
+          <option value="remote">Remote</option>
+        </select>
+        
+        <button id="postjob">Post Job</button>
+      </div>
+      <div class="joblist" id="postedJobData">
+      </div>
+    </section>
+
+    <script src="../js/postJobDetails.js"></script>
+  </body>
+</html>

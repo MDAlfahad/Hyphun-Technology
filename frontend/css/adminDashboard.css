@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition: 0.3s;
+  scroll-behavior: smooth;
+
+}
+
+body {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 0;
+  width: 100%;
+  background: var(--pink);
+}
+
+.adminDashboard {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.left-container {
+  width: 20vw;
+  background: rgb(26, 26, 26);
+  height: 100vh;
+  color: rgb(219, 219, 219);
+  padding: 1rem 2rem;
+}
+
+.dash {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dash p,
+span {
+  font-size: 25px;
+}
+
+.dash a {
+  font-size: 16px;
+  padding: 1rem;
+}
+
+.dash a:active {
+  background: rgb(0, 145, 175);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.links h2 {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+.links a {
+  padding: 1rem;
+}
+
+.links a:active {
+  background: rgb(0, 145, 175);
+}
+
+
+/* ----------right container---------------- */
+
+.right-container {
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+}
+
+.dashboard-container {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 30vh;
+}
+
+.box {
+  width: 20rem;
+  height: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(rgb(0, 145, 175), rgba(1, 145, 175, .5));
+}
+
+.dashboard-container a {
+  font-size: 16px;
+  color: black;
+}
+
+.dashboard-container h1 {
+  padding: .5rem 0;
+  font-weight: 500;
+}
+
+#totalUser {
+
+  font-weight: 600;
+}
+
+.dashboard-container p {
+  font-size: 30px;
+  padding: .5rem 0;
+}
+
+.box1 {
+  width: 20rem;
+  height: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(rgb(11, 114, 233), rgba(11, 114, 233, .5));
+}
+
+.box2 {
+  width: 20rem;
+  height: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(rgb(202, 0, 209), rgba(202, 0, 209, 0.5));
+}
+
+
+/* ------------------------------forms details --------------------- */
+
+.form-details {
+  width: 100%;
+}
+
+
+.filter-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem 1rem;
+  background: transparent;
+  border: 1px solid rgb(0, 145, 175);
+}
+
+.filter-bar span {
+  width: 300px;
+  align-items: center;
+  justify-content: center;
+  padding: .1rem .5rem;
+  display: flex;
+  gap: 2px;
+  border: 1px solid rgb(0, 145, 175);
+  border-radius: 2rem;
+  overflow: hidden;
+
+}
+
+.filter-bar input {
+  width: 100%;
+  padding: 1rem .5rem;
+  border-radius: 2rem;
+  padding: .8rem;
+}
+
+span i {
+  font-size: 16px;
+  padding: .2rem 1rm;
+}
+.filter-bar select {
+  padding: .8rem 1rem;
+  border: 1px solid rgb(0, 145, 175);
+  border-radius: 2rem;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  background: rgb(0, 145, 175);
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+}

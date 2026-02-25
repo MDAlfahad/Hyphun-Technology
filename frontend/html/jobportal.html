@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job | Apply for your dream</title>
+    <link rel="stylesheet" href="../css/jobportal.css" />
+
+    <!-- -----------font awesome cdn-------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="jobimageElement">
+        <div class="arrow">
+            <i style="font-size: 20px;" class="fa-solid fa-angles-down"></i>
+        </div>
+    </div>
+    <section style="display: flex; justify-content: space-between; height: 90vh;">
+      
+
+      <div class="jobshowlist">
+        <div class="joblistgriddata">
+          <div id="joblist"></div>
+        </div>
+
+        <div class="jobsearch">
+          <div class="jobsearchpanel">
+            <i class="fa-brands fa-sistrix"></i>
+            <input
+              type="search"
+              id="jobsearch"
+              placeholder="Search Your Dream Job"
+            />
+          </div>
+          <div class="filter-search">
+            <div style="display: flex; flex-direction: column; gap: 30px">
+              <p>Frontend Development</p>
+              <p>Backend Development</p>
+              <p>Full Stack Development</p>
+              <p>Work From Home</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 35px">
+              <input type="checkbox" name="" id="frontend" />
+              <input type="checkbox" name="" id="backend" />
+              <input type="checkbox" name="" id="dataanylist" />
+              <input type="checkbox" name="" id="workfromhome" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../js/jobListDetails.js"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Placement</title>
+
+    <link rel="stylesheet" href="../css/login.css" />
+
+    <!-- -----------font awesome cdn-------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section class="loginPage">
+      <div class="left-container">
+        <img src="../images/image copy.png" alt="" />
+      </div>
+      <div class="box-container"  id="login-form" style="display: none";>
+        <h1>LOGIN</h1>
+
+        <form action="submit" id="form-login">
+          <input id="login-email" type="email" placeholder="Email" required />
+          <input
+            id="login-password"
+            type="Password"
+            placeholder="Password"
+            required
+          />
+          <p id="invalidlogin"></p>
+          <button id="btn" type="submit">LOGIN</button>
+        </form>
+        <p>Don't have account?<a onclick="signup()" href="#signup"> Signup</a></p>
+        <div class="loginWith">
+          <hr />
+          <p>or login with</p>
+          <hr />
+        </div>
+        <div class="links">
+          <i class="fa-brands fa-google"></i>
+          <i class="fa-brands fa-linkedin"></i>
+        </div>
+      </div>
+
+
+      <div class="box-container" id="signupform" >
+        <h1>Create Account</h1>
+
+        <form id="form-signup">
+          <input id="sign-name" type="text" placeholder="Name" required />
+          <input id="mobile-num" type="number" placeholder="Mobile" required />
+          <input id="sign-email" type="email" placeholder="Email" required />
+          <input
+            id="sign-password"
+            type="Password"
+            placeholder="Password"
+            required
+          />
+          <input
+            id="sign-re-password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <p id="invalidpass"></p>
+          <button id="sign-btn" type="submit">Create Account</button>
+        </form>
+        <p>Already have account?<a onclick="login()" href="#signup"> Login</a></p>
+        <div class="loginWith">
+          <hr />
+          <p>or login with</p>
+          <hr />
+        </div>
+        <div class="links">
+          <i class="fa-brands fa-google"></i>
+          <i class="fa-brands fa-linkedin"></i>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <script src="../js/login-signup.js"></script>
+  </body>
+</html>

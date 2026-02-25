@@ -1,0 +1,370 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition: 0.3s;
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 1800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+section {
+  padding: 0 4%;
+}
+:root {
+  --red: red;
+  --red: rgb(212, 3, 3);
+  --text-color: rgb(82, 82, 82);
+}
+/* ----------------------------header------------------------- */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  z-index: 9999;
+  background: white;
+  position: relative;
+}
+header .logo {
+  font-size: 30px;
+  font-weight: 600;
+  color: black;
+}
+header .nav {
+  display: flex;
+  gap: 3rem;
+}
+nav a {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--blue);
+}
+header button {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  font-size: 25px;
+  color: black;
+  cursor: pointer;
+}
+header .fa-bars {
+  font-size: 20px;
+}
+.bar {
+  display: none;
+}
+.mobileRes {
+  display: none;
+}
+.box-container {
+  display: none;
+  flex-direction: column;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  padding: .1rem;
+  top: 100%;
+  right: 0;
+  background: white;
+  z-index: -1;
+
+}
+.hide{
+  display: flex;
+}
+.box-container a{
+  padding: 1rem 2rem;
+  color:rgb(0, 153, 173);
+}
+.box-container a:active{
+  background: rgb(0, 153, 173);
+}
+
+.mobileRes a {
+  padding: 1rem;
+}
+.mobileRes a:hover {
+  background: rgb(48, 48, 48);
+  color: white;
+}
+
+/* ---------------hero section----------------------- */
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+.hero span {
+  font-size: 40px;
+  font-weight: bold;
+  color: red;
+}
+.hero p {
+  font-size: 14px;
+}
+
+.btn button {
+  padding: 0.5rem 2rem;
+  border: black 1px solid;
+  color: black;
+  background: transparent;
+  font-weight: 500;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.btn button:hover {
+  color: white;
+}
+.btn button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  width: 0%;
+  height: 100%;
+  transition: 0.3s ease;
+  z-index: -1;
+}
+.btn button:hover::before {
+  width: 100%;
+}
+.hero img {
+  width: 30rem;
+  border-radius: 50%;
+}
+
+/*--------------------- company list section --------------- */
+
+.company-list {
+  width: 100%;
+  padding: 4rem 4%;
+  background: #ffffff;
+}
+
+.company-list h1 {
+  padding: 2rem 0;
+  font-size: 40px;
+  text-align: center;
+}
+.company-list span {
+  font-size: 40px;
+  color: red;
+}
+
+.company-container {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 600px 600px;
+  grid-template-rows: 25% 25%;
+  column-gap: 20px;
+  row-gap: 20px;
+  padding: 2rem 0;
+}
+.comapyCard {
+  width: 100%;
+  height: 15rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  padding: 1rem;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+}
+.comapyCard:hover {
+  transform: scale(1.02);
+}
+.comapyCard h2 {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(0, 153, 173);
+}
+.comapyCard p {
+  font-size: 14px;
+  padding: 5px 0;
+  color: gray;
+}
+.comapyCard h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(43, 43, 43);
+}
+.comapyCard hr {
+  width: 100%;
+  height: 1px;
+  background: rgb(184, 255, 255);
+}
+
+.comapyCard button {
+  padding: 0.5rem 2rem;
+  width: 100%;
+  border: rgb(0, 153, 173) 1px solid;
+  color: rgb(0, 153, 173);
+  background: transparent;
+  font-weight: 500;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.comapyCard button:hover {
+  color: white;
+}
+.comapyCard button::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgb(0, 153, 173);
+  width: 100%;
+  height: 0%;
+  transition: 0.3s ease;
+  z-index: -1;
+}
+.comapyCard button:hover::before {
+  height: 100%;
+}
+
+/* --------------------------footer--------------- */
+
+.footer {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background:     #007981;
+  color: white;
+  padding: 2rem 4%;
+}
+.footer-box {
+  display: flex;
+  justify-content: space-between;
+}
+.linksdata{
+  display: flex;
+  gap: 20px;
+}
+.linksdata a, .data a{
+  font-size: 14px;
+  color: white;
+  font-weight: 300;;
+}
+.linksdata a:hover, .data a:hover{
+  color: rgb(190, 190, 190);
+}
+.morelinks{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+footer .data {  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+.subscribe{
+  display: flex;
+  flex-direction: row;
+}
+.subscribe span {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: transparent ;
+  border: 1px solid white;
+
+}
+
+span input{
+  background: transparent;
+  width: 100%;
+  padding: 0 .5rem;
+  color: white;
+}
+span button{
+  font-weight: 500  ;
+  padding:  1rem;
+}
+span button:hover{
+  color: white;
+  background: black;
+}
+.links{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.links i {
+  font-size: 30px;
+  color: white;
+}
+
+.links i:hover {
+  color: black;
+}
+
+footer p {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ------------------Responsive layout----------------------- */
+
+@media (max-width: 480px) {
+  header .nav {
+    display: none;
+  }
+  .mobileRes {
+    position: absolute;
+    width: 100%;
+    background: white;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    gap: 1px;
+    transform: translate(100%);
+    transition: 0.3s ease;
+  }
+  .bar {
+    display: block;
+  }
+}
