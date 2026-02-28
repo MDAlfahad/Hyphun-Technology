@@ -20,3 +20,12 @@ input.addEventListener("change", (e) => {
   reader.readAsDataURL(file);
 });
 
+document.getElementById('logoutbtn').addEventListener("click", ()=>{
+
+  const role = localStorage.getItem('role')
+  
+if(role === "user" || role ==="admin"){
+localStorage.removeItem("role")
+window.location.href = "../index.html"
+}
+})

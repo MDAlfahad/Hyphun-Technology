@@ -68,7 +68,7 @@ button {
   overflow: hidden;
 }
 button:hover {
-  color: white;
+  color: black;
 }
 button::before {
   content: "";

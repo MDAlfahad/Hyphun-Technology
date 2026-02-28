@@ -8,7 +8,7 @@
   font-size: 16px;
   text-transform: capitalize;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.5s;
   scroll-behavior: smooth;
 }
 
@@ -47,9 +47,10 @@ header .logo {
 }
 header .nav {
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
 }
 nav a {
+  font-size: 14px;
   color: var(--text-color);
   font-weight: 500;
 }
@@ -118,11 +119,11 @@ header .fa-bars {
   align-items: center;
 }
 .hero h1 {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
 }
 .hero span {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
   color: red;
 }
@@ -133,7 +134,7 @@ header .fa-bars {
 .btn button {
   padding: 0.5rem 2rem;
   border: black 1px solid;
-  color: black;
+  color: black; 
   background: transparent;
   font-weight: 500;
   position: relative;
@@ -174,6 +175,9 @@ header .fa-bars {
   padding: 2rem 0;
   font-size: 40px;
   text-align: center;
+  animation: scrollview linear 5s ;
+  animation-timeline: view();
+  animation-range:Entry 10% cover 60%;
 }
 .company-list span {
   font-size: 40px;
@@ -200,15 +204,18 @@ header .fa-bars {
   justify-content: space-around;
   position: relative;
   padding: 1rem;
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, .1);
+  
 }
 .comapyCard:hover {
   transform: scale(1.02);
+  
 }
 .comapyCard h2 {
   font-size: 20px;
   text-align: center;
   color: rgb(0, 153, 173);
+
 }
 .comapyCard p {
   font-size: 14px;
@@ -278,6 +285,9 @@ header .fa-bars {
   font-size: 14px;
   color: white;
   font-weight: 300;
+  animation: scrollview linear 5s;
+  animation-timeline: view();
+  animation-range: Entry 0% cover 20%;
 }
 .linksdata a:hover,
 .data a:hover {
@@ -341,6 +351,19 @@ footer p {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+
+@keyframes scrollview{
+  from{
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  tp{
+    opacity: 1;
+    transform: translatex(0);
+  }
 }
 
 /* ------------------Responsive layout----------------------- */

@@ -21,7 +21,9 @@
   </head>
   <body>
     <section class="container" id="joblist">
-      <form action="submit" id="jobform" style="display: none">
+      <div id="jobform" style="display: none">
+        <i id="closebtn" class="fa-solid fa-x"></i>
+      <form action="submit" >
         <h1>Fill Requirements</h1>
 
         <label for="title">Title</label>
@@ -62,10 +64,12 @@
         <label for="requirement">Other Requirement</label>
         <textarea name="requirement" id="requirement" type="text"></textarea>
         <div class="btn">
-          <button id="closebtn">close</button>
+          
           <button id="button" type="submit">Submit</button>
         </div>
       </form>
+      </div>
+      
       
       <!-- ----------- posted job view-------------------- -->
       <div class="selection">

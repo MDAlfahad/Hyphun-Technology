@@ -2,7 +2,7 @@ window.onload = function () {
 
   const form = document.getElementById("form");
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
      const user = localStorage.getItem("role");
@@ -13,21 +13,30 @@ window.onload = function () {
       return;
     }
 
-    const formData = {
-      name: document.getElementById("name").value,
-      type: document.getElementById("selctitem").value,
-      email: document.getElementById("email").value,
-      position: document.getElementById("position").value,
-      city: document.getElementById("city").value,
-      landmark: document.getElementById("landmark").value,
-      address: document.getElementById("address").value,
-      birthdate: document.getElementById("birthdate").value,
-      tel: document.getElementById("tel").value,
-      choosefile: document.getElementById("choosefile").files[0]?.name,
-      id: new Date().toDateString(),
-    };
-   
-    
-    window.location.href = "../index.html";
+    const formData = new FormData();
+
+    formData.append("name", document.getElementById("name").value);
+    formData.append("type", document.getElementById("selctitem").value);
+    formData.append("email", document.getElementById("email").value);
+    formData.append("position", document.getElementById("position").value);
+    formData.append("city", document.getElementById("city").value);
+    formData.append("landmark", document.getElementById("landmark").value);
+    formData.append("address", document.getElementById("address").value);
+    formData.append("birthdate", document.getElementById("birthdate").value);
+    formData.append("tel", document.getElementById("tel").value);
+
+
+  
+     await fetch("http://localhost:5000/formData",{
+      method: 'POST',
+      body: formData,
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log("server response:", data)
+    alert(data.message);
+    })
+   alert('Uploaded')
+
   });
 };

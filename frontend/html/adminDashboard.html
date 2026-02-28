@@ -70,7 +70,7 @@
         <div class="form-details content-section" id="form-details">
           <div class="filter-bar">
             <span
-              ><input type="search" placeholder="Search here" /><i
+              ><input type="search" placeholder="Search here" id="searchbar"/><i
                 class="fa-brands fa-sistrix"
               ></i
             ></span>
@@ -79,7 +79,7 @@
               <option value="frontend">Frontend</option>
               <option value="frontend">Backend</option>
               <option value="frontend">MERN Stack</option>
-              <option value="frontend">Ui/UX</option>
+              <option value="frontend">UiUX</option>
               <option value="frontend">Web Development</option>
             </select>
             <select name="approv" id="approved">
@@ -96,23 +96,37 @@
                 <th>Name</th>
                 <th>Position</th>
                 <th>Submition date</th>
-                <th>Approve</th>
+                <th>Status</th>
               </tr>
             </thead>
-            <tbody class="form-box2">
-              <tr>
-                <td id="form-name">Alfahad</td>
-                <td id="form-position">Frontend Developer</td>
-                <td id="form-date">20/02/2026</td>
-                <td id="form-approve">Approved</td>
-              </tr>
+            <tbody class="form-box2" id="formBoxData">
+
             </tbody>
           </table>
           </div>
         </div>
 
         <div class="users content-section" id="users-container">
-          1
+          <div class="table-wrapper">
+            <table class="form-show">
+            <thead class="form-box">
+              <tr>
+                <th>email</th>
+                <th>Role</th>
+                <th>Login Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody class="form-box2">
+              <tr>
+                <td id="form-name">alfahadkhan715@gmail.com</td>
+                <td id="form-position">User</td>
+                <td id="form-date">20/02/2026</td>
+                <td  id="form-approve">Active</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
         </div>
         <div class="studentlist content-section" id="student-container">
           alfahad

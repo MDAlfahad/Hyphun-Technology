@@ -1,37 +1,194 @@
-const express = require("express");
-const mysql = require("mysql2");
-const cors = require("cors");
-const db = require('./db')
-
-
 require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const db = require("./db");
+const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require("uuid");
+const formidable = require("formidable");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(mysql);
 
-app.post("./register", async (req, res)=>{
+app.post("/register", async (req, res) => {
+  const { name, email, password } = req.body;
+  try {
+    const hashed = await bcrypt.hash(password, 10);
 
-const {name, email, password} = req.body;
-const hashed = await bcrypt.hash(password, 10);
+    db.query(
+      "INSERT INTO login_user (name, email, password) VALUES(?, ?, ?)",
+      [name, email, hashed],
+      (err) => {
+        if (err) return res.status(400).json({ err: "User Alredy exists" });
+        res.json({
+          sucess: true,
+          statusCode: 201,
+          message: "Register Sucessfully",
+        });
+      },
+    );
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
 
   db.query(
-    "INSERT INTO login_user (name, email, password) VALUES(?, ?)",
-    [name, email, hashed],
-    (err)=>{
-      if(err) return res.status(400).json({error: "User Alredy exists"});
-      res.json({message: "Register Sucessfully"});
-    }
+    "SELECT * FROM login_user WHERE email= ?",
+    [email],
+    async (err, result) => {
+      if (err) return res.status(500).json({ error: "server error" });
+
+      if (result.length === 0) {
+        return res.status(400).json({ error: "User Not Found" });
+      }
+
+      const user = result[0];
+
+      const match = await bcrypt.compare(password, user.password);
+
+      if (!match) {
+        return res.status(400).json({ error: "Wrong Password" });
+      }
+      res.json({
+        sucess: true,
+        statuscode: 200,
+        message: "login sucessfull",
+        role: user.role,
+        name: user.name,
+      });
+    },
   );
 });
 
-db.connect((err) => {
-  if (err) throw err;
-  console.log("MySql Connected");
+app.post("/formData", (req, res) => {
+  const form = new formidable.IncomingForm();
+
+  form.parse(req, (err, fields) => {
+    if (err) return res.status(500).send("Error parsing form");
+
+    const {
+      name,
+      type,
+      email,
+      position,
+      city,
+      landmark,
+      address,
+      birthdate,
+      tel,
+    } = fields;
+    const formId = uuidv4();
+
+    const sql =
+      "INSERT INTO job_form(user_id, name, type, email, position, city, landmark, address, birthdate, tel ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    db.query(
+      sql,
+      [
+        formId,
+        name,
+        type,
+        email,
+        position,
+        city,
+        landmark,
+        address,
+        birthdate,
+        tel,
+      ],
+      (err, result) => {
+        if (err) {
+          console.log("err", err);
+          return res.status(500).send({ error: "Form subission failed" });
+        }
+        res.json({
+          sucess: true,
+          id: formId,
+          message: "Form Submitted Successfully",
+        });
+      },
+    );
+  });
 });
 
+app.get("/formSubData", (req, res) => {
+  const sql = `SELECT name, position, date FROM job_form`;
 
+  db.query(sql, (err, result) => {
+    if (err) return res.status(501).send("faild to get Data");
+    res.json(result);
+  });
+});
+
+app.post("/jobformdata", (req, res) => {
+  const form = new formidable.IncomingForm();
+
+  form.parse(req, (err, fields) => {
+    if (err) return res.status(500).send("error in uploading form");
+    const {
+      title,
+      companyName,
+      experience,
+      jobType,
+      location,
+      startDate,
+      CTC,
+      applydate,
+      skills,
+      description,
+      aboutcompany,
+      requirement,
+    } = fields;
+
+
+    const formId = uuidv4();
+
+    const sql =
+      "INSERT INTO job_postdata(id, title, companyName, experience, jobType, location, startDate, CTC, applydate, skills, description,aboutcompany, requirement) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+
+    db.query(
+      sql,
+      [
+        formId,
+        title,
+        companyName,
+        experience,
+        jobType,
+        location,
+        startDate,
+        CTC,
+        applydate,
+        skills,
+        description,
+        aboutcompany,
+        requirement,
+      ],
+      (err, result) => {
+        if (err){
+          console.log('err', err)
+          return res.status(500).send("failed to Post Job");} 
+
+     return  res.status(200).json({
+          message: "Job posted successfully",
+          id: formId,
+          sucess: true,
+        });
+      },
+    );
+  });
+});
+
+app.get("/jobdata", (req, res)=>{
+  const sql = "SELECT * FROM job_postdata";
+  db.query(sql, (err, result)=>{
+    
+    if(err) return res.status(500).send("failed to load data");
+    res.json(result)
+  })
+})
 
 app.listen(5000, () => {
   console.log("server runngin on port 5000");

@@ -1,7 +1,21 @@
 window.onload = function () {
   const jobpreview = document.getElementById("joblist");
 
-  joblistdata.forEach((items) => {
+
+  let allData =[]
+
+  fetch("http://localhost:5000/jobdata")
+  .then((res) => res.json())
+  .then((data)=>{
+    allData = data;
+    showData(allData)
+  });
+  function showData(data) {
+
+  jobpreview.innerHTML = "";
+
+  
+  allData.forEach((items) => {
     const title = document.createElement("div");
 
     title.innerHTML = `
@@ -21,4 +35,6 @@ window.onload = function () {
 
     jobpreview.appendChild(title);
   });
+  }
+
 };

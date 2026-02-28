@@ -19,7 +19,7 @@
       <div class="form">
         <h1>Job Application Form</h1>
 
-        <form action="submit" id="form" class="form-box">
+        <form enctype="multipart/form-data" id="form" class="form-box">
           <label for="name">name</label>
           <input type="text" id="name" name="name" required />
           <label for="email">Email</label>
@@ -56,8 +56,8 @@
           <label for="tel">Mobile Number</label>
           <input type="tel" id="tel" name="mobile" required />
             <div style="border: 1px solid gray; padding: .5rem;">
-                <label for="Choosefile">Upload your file</label>
-          <input type="file" id="choosefile"  />
+                <label for="Choosefile" >Upload your file</label>
+          <input type="file" id="choosefile" accept="image/*"  />
             </div>
 
           <div style="display: flex;">

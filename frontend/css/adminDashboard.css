@@ -72,6 +72,7 @@ span {
 
 .links p {
   padding: 1rem;
+  cursor: pointer;
 }
 
 .links p:active {
@@ -235,11 +236,28 @@ span i {
   overflow-x: auto;
 }
 
+#formBoxData tr{
+ padding: 12px 15px;
+    border-bottom: 1px solid gray;
+}
+#formBoxData tr th{
+   padding: 12px 15px;
+   font-weight: normal;
+   font-size: 14px;
+}
+
+
 .content-section{
 display: none;
 }
 .content-section.active{
   display: flex;
+}
+
+/* ------------user details ------------------ */
+.users-container{
+  display: flex;
+  flex-direction: column;
 }
 
 

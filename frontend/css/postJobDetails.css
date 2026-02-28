@@ -27,7 +27,7 @@ section {
 form {
   max-width: 1800px;
   width: 70%;
-  height: 90vh;
+  height: 100vh;
   background: #fff;
   overflow-y: auto;
   padding: 2rem;
@@ -39,7 +39,7 @@ form {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(20%, 5%);
+  transform: translate(20%);
   z-index: 999;
 }
 form h1 {
@@ -63,9 +63,17 @@ form textarea {
   max-height: 300px;
   border: 1px solid gray;
 }
-form .btn {
-  display: flex;
-  gap: 20px;
+
+#closebtn {
+  position: absolute;
+  top: 2%;
+  right: 14%;
+  text-align: right;
+  color: white;
+}
+#closebtn:active {
+  background: black;
+  color: white;
 }
 
 form button {
@@ -90,18 +98,15 @@ form button:active {
   align-items: center;
   background: rgb(0, 145, 175);
   /* border-radius: 5rem; */
-  margin: 2rem 0 0.5rem 0;
 }
 .search {
   padding: 0.5rem 1rem;
   border: 1px solid white;
   background: white;
-  border-radius: 5rem;
+  width: 400px;
   display: flex;
   align-items: center;
-  box-shadow:
-    inset 1px 1px 5px rgba(0, 0, 0, 0.5),
-    inset -5px -5px 20px rgba(225, 225, 225, 1);
+  box-shadow: 0 0 10px rgba(225, 225, 225, 1);
 }
 .selection input {
   width: 100%;
@@ -116,11 +121,9 @@ select {
   padding: 0.5rem 1rem;
 
   border-radius: 0.1rem;
-  width: 20%;
+  width: 400px;
   background: white;
-  box-shadow:
-    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 20px rgba(225, 225, 225, 1);
+  box-shadow: 0 0 5px rgba(225, 225, 225, 1);
 }
 option {
   border-radius: 0.2rem;
@@ -131,9 +134,12 @@ button {
   padding: 0.5rem 1rem;
   border: 1px solid white;
   background: transparent;
-  border-radius: 5rem;
   color: white;
   font-weight: 500;
+}
+button:hover {
+  background: gray;
+  color: white;
 }
 button:active {
   background: black;
@@ -149,7 +155,6 @@ button:active {
   height: 90vh;
   overflow-y: auto;
   border: 1px solid gray;
-
   padding: 1rem;
   gap: 20px;
   background: white;
