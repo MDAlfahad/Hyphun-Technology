@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../css/adminDashboard.css" />
+    <script src="https://cdn.jsdelivr.net/pm/chart.js"></script>
 
     <!-- -----------font awesome cdn-------------- -->
     <link
@@ -19,15 +20,23 @@
   <body>
     <section class="adminDashboard">
       <div class="left-container">
-        <div class="dash" >
-          <p id="username"><span>User,</span></p>
+        <div class="dash">
+          <p id="username"><span> User,</span></p>
           <hr
-            style="width: 100%; height: 1px; background: rgb(219, 219, 219); margin: 5px 0; " />
-          <p id="dashboard">dashboard</p>
+            style="
+              width: 100%;
+              height: 1px;
+              background: rgb(219, 219, 219);
+              margin: 5px 0;
+            "
+          />
+          <p id="dashboard">
+            <i class="fa-regular fa-chart-bar"></i> dashboard
+          </p>
         </div>
 
         <div class="links">
-          <h2 >ELEMENTS</h2>
+          <h2>ELEMENTS</h2>
           <hr
             style="
               width: 100%;
@@ -36,43 +45,136 @@
               margin: 10px 0;
             "
           />
-          <p id="tables">Tables</p>
-          <p id="form">Forms</p>
-          <p id="users">Users</p>
-          <p id="studentlist">Student Lists</p>
-          <p id="logOutbtn">logout</p>
+          <p id="form">
+            <i class="fa-regular fa-pen-to-square"></i> Forms Details
+          </p>
+          <p id="users"><i class="fa-regular fa-user"></i> Users Details</p>
+          <p id="company">
+            <i class="fa-regular fa-building"></i> company Details
+          </p>
+          <p id="logOutbtn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> logout
+          </p>
         </div>
       </div>
 
       <div class="right-container">
-        <div class="dashboard-container content-section" id="dashboard-container">
-          <div class="box">
-            <h1>Total Users</h1>
-            <p id="totalUser">1000</p>
-            <a href="">Check Details <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="dashboard-container content-section" id="dashboard-box">
+          <div class="dashboard-child">
+            <div class="child-box">
+              <h1>Total User</h1>
+              <h1 style="font-weight: 600">1000+</h1>
+            </div>
+            <div class="child-box2">
+              <h1>Active User</h1>
+              <h1 style="font-weight: 600">100+</h1>
+            </div>
+            <div class="child-box3">
+              <h1>Total form</h1>
+              <h1 style="font-weight: 600">10,000+</h1>
+            </div>
           </div>
-          <div class="box1">
-            <h1>Total Application</h1>
-            <p id="totalUser">1000</p>
-            <a href="">Check Details <i class="fa-solid fa-arrow-right"></i></a>
+           <div class="profile-container" id="profileContainer">
+            <div style="display: flex; align-items: center; gap: 30px">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 20px;
+                  position: relative;
+                "
+              >
+                <img width="200px" height="200px" id="img" src="" alt="" />
+                <label
+                  style="
+                    background: #088395;
+                    border-radius: 5rem;
+                    color: white;
+                    padding: 1.1rem 1rem;
+                    cursor: pointer;
+                    font-size: 14px;
+                    position: absolute;
+                    bottom: 20%;
+                    right: 0;
+                  "
+                  for="imageupload"
+                  ><i class="fa-regular fa-pen-to-square"></i
+                ></label>
+                <p id="username" style="font-weight: 600; font-size: 18px">
+                  MD Alfahad
+                </p>
+                <input id="imageupload" type="file" hidden />
+              </div>
+            </div>
+            <div class="userDetails" id="userDetails">
+              <h1>Personal Information</h1>
+              <div class="userDetailsForm" id="userDetailsForm">
+                <div style="display: flex; gap: 20px; line-height: 40px">
+                  <div style="width: 100%">
+                    <label for="firstname">First name</label>
+                    <input
+                      style="width: 100%"
+                      type="text"
+                      id="firstname"
+                      placeholder="First name"
+                    />
+                  </div>
+                  <div style="width: 100%">
+                    <label for="lastname">Last name</label>
+                    <input
+                      style="width: 100%"
+                      type="text"
+                      id="lastname"
+                      placeholder="Last name"
+                    />
+                  </div>
+                </div>
+                <div style="display: flex; width: 15%; padding: 1rem 0">
+                  <label for="male">Male</label>
+                  <input id="male" type="radio" />
+                  <label for="female">Female</label>
+                  <input type="radio" id="female" />
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 20px">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" placeholder="Your email" />
+                  <label for="address">Address</label>
+                  <input type="text" id="address" placeholder="Your Address" />
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    margin: 1rem 0;
+                  "
+                >
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" placeholder="+01-222-3333-443" />
+                  <label for="Dateofbirth">Date of birth</label>
+                  <input
+                    type="date"
+                    id="Dateofbirth"
+                    placeholder="Your Date of Birth"
+                  />
+                </div>
+                <div style="display: flex; gap: 20px; margin: 2rem 0">
+                  <button id="activebtn">Discard change</button>
+                  <button onclick="saveProfile()">Save Changes</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="box2">
-            <h1>Total Forms</h1>
-            <p id="totalUser">1000</p>
-            <a href="">Check Details <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="table content-section" id="tables-container ">
-          123
         </div>
 
         <div class="form-details content-section" id="form-details">
           <div class="filter-bar">
             <span
-              ><input type="search" placeholder="Search here" id="searchbar"/><i
-                class="fa-brands fa-sistrix"
-              ></i
+              ><input
+                type="search"
+                placeholder="Search here"
+                id="searchbar" /><i class="fa-brands fa-sistrix"></i
             ></span>
             <select name="select" id="select">
               <option value="select">position</option>
@@ -91,49 +193,47 @@
 
           <div class="table-wrapper">
             <table class="form-show">
-            <thead class="form-box">
-              <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Submition date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody class="form-box2" id="formBoxData">
-
-            </tbody>
-          </table>
+              <thead class="form-box">
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Submition date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody class="form-box2" id="formBoxData"></tbody>
+            </table>
           </div>
         </div>
 
         <div class="users content-section" id="users-container">
           <div class="table-wrapper">
             <table class="form-show">
-            <thead class="form-box">
-              <tr>
-                <th>email</th>
-                <th>Role</th>
-                <th>Login Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody class="form-box2">
-              <tr>
-                <td id="form-name">alfahadkhan715@gmail.com</td>
-                <td id="form-position">User</td>
-                <td id="form-date">20/02/2026</td>
-                <td  id="form-approve">Active</td>
-              </tr>
-            </tbody>
-          </table>
+              <thead class="form-box">
+                <tr>
+                  <th>email</th>
+                  <th>Role</th>
+                  <th>Login Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody class="form-box2" id="userdata"></tbody>
+            </table>
           </div>
         </div>
         <div class="studentlist content-section" id="student-container">
-          alfahad
+          404 Not Found
         </div>
       </div>
     </section>
 
     <script src="../js/adminBashboard.js"></script>
+    <script>
+      const role = localStorage.getItem("role");
+      if (role !== "admin") {
+        alert("access Denied! Admins only");
+        window.location.href = "../index.html";
+      }
+    </script>
   </body>
 </html>

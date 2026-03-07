@@ -16,5 +16,12 @@
     </section>
 
     <script src="../js/companyDashboard.js"></script>
+    <script>
+       const role = localStorage.getItem("role");
+  if(role !== "admin" && role!== "user"){
+      alert("access Denied! Login First!")
+      window.location.href = "../html/loginpage.html"
+    }
+    </script>
 </body>
 </html>

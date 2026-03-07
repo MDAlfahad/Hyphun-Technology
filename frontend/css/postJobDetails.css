@@ -11,6 +11,19 @@
   transition: 0.3s;
   scroll-behavior: smooth;
 }
+::-webkit-scrollbar{
+  display: none;
+}
+*{
+  scroll-behavior: none;
+}
+
+:root {
+  --primary: #088395;
+  --secondary: #09637e;
+  --text-color: #7ab2b2;
+  --background: #ebf4f6;
+}
 
 body {
   max-width: 1800px;
@@ -19,7 +32,6 @@ body {
   min-height: 100vh;
 }
 section {
-  padding: 0 4%;
   width: 100%;
 }
 
@@ -92,11 +104,11 @@ form button:active {
 
 .selection {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 1rem 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgb(0, 145, 175);
+  background: var(--primary) ;
   /* border-radius: 5rem; */
 }
 .search {
@@ -106,7 +118,7 @@ form button:active {
   width: 400px;
   display: flex;
   align-items: center;
-  box-shadow: 0 0 10px rgba(225, 225, 225, 1);
+
 }
 .selection input {
   width: 100%;
@@ -155,18 +167,21 @@ button:active {
   height: 90vh;
   overflow-y: auto;
   border: 1px solid gray;
-  padding: 1rem;
+ 
+  padding: 1rem 6%;
   gap: 20px;
-  background: white;
+  background: var(--background);
 }
 .joblist div {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   border: 1px solid gray;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  background: white;
   gap: 20px;
+  
 }
 
 /* -----------------------responsive layout--------------------------- */

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Placementnama 2026 || Welcome</title>
+    <title>Job Portal | Welcome to Job Portal</title>
     <link rel="stylesheet" href="./css/style.css" />
 
     <!-- -----------font awesome cdn-------------- -->
@@ -22,48 +22,67 @@
   <body>
     <!-- --------------------------header----------------------- -->
     <header>
-      <a class="logo" href="#hero">Placement</a>
-      <nav class="nav">
-        <a href="#hero">Home</a>
-        <a href="#company"> Get Placement</a>
-        <a href="./html/jobportal.html">Jobs</a>
-        <a href="./html/companyDashboard.html">Company</a>
-      </nav>
+      <div class="head">
+        <a class="logo" href="#hero">JOB PORTAL</a>
+        <nav class="nav">
+          <a href="#hero">Home</a>
+          <a href="#company"> Get Placement</a>
+          <a href="./html/jobportal.html">Jobs</a>
+          <a href="./html/companyDashboard.html">Company</a>
+          <a
+            id="dashbard"
+            href="./html/studentDashbaord.html"
+            style="display: none"
+            >Dashboard</a
+          >
+          <a
+            id="admindashboard"
+            href="./html/adminDashboard.html"
+            style="display: none"
+            >Admin Dashboard</a
+          >
+        </nav>
 
-      <!-- ------------mobile screen 480px---------------- -->
-      <nav class="mobileRes">
-        <a href="#hero">Home</a>
-        <a href="#company-list">Get Placement</a>
-        <a href="./html/jobportal.html">Jobs</a>
-        <a href="./html/companyDashboard.html">Company</a>
-      </nav>
-      <button id="login-btn">
-        <i class="fa-regular fa-user"></i>
-        <p id="username"></p>
-      </button>
-      <div class="box-container" id="box-container">
-        <a id="login" href="./html/loginpage.html"></a>
-        <a
-          id="dashbard"
-          href="./html/studentBashbaord.html"
-          style="display: none"
-          >Dashboard</a
-        >
-        <a
-          id="admindashboard"
-          href="./html/adminDashboard.html"
-          style="display: none"
-          >Admin Dashboard</a
-        >
-      </div>
-      <div id="bar" class="bar">
-        <i class="fa-solid fa-bars"></i>
+        <!-- ------------mobile screen 480px---------------- -->
+        <nav class="mobileRes">
+          <a href="#hero">Home</a>
+          <a href="#company">Get Placement</a>
+          <a href="./html/jobportal.html">Jobs</a>
+          <a href="./html/companyDashboard.html">Company</a>
+          <a id="login" href="./html/loginpage.html">Login</a>
+          <a
+            id="dashbard"
+            href="./html/studentD   ashbaord.html"
+            style="display: none"
+            >Dashboard</a
+          >
+          <a
+            id="admindashboard"
+            href="./html/adminDashboard.html"
+            style="display: none"
+            >Admin Dashboard</a
+          >
+        </nav>
+        <button id="login-btn">
+          <i style="font-size: 25px" class="fa-regular fa-user-circle"></i>
+          <h1>LOGIN</h1>
+        </button>
+        <div id="bar" class="bar">
+          <i class="fa-solid fa-bars"></i>
+        </div>
       </div>
     </header>
 
     <!-- ------------------hero section------------------------- -->
 
     <section id="hero" class="hero">
+      <div class="iconspack">
+        <i class="icons fa-brands fa-amazon"></i>
+        <i class="iconsa fa-brands fa-earlybirds"></i>
+        <i class="iconsb fa-brands fa-ebay"></i>
+        <i class="iconsc fa-brands fa-aws"></i>
+        <i class="iconsd fa-brands fa-android"></i>
+      </div>
       <div style="display: flex; flex-direction: column; gap: 2rem">
         <h1>Your Journey Never end , <span>Get Your Job Now</span></h1>
         <p>
@@ -75,11 +94,122 @@
         </p>
 
         <div class="btn">
-          <button id="applybtn" style="cursor: pointer">Apply</button>
+          <button id="applybtn" style="cursor: pointer">
+            Apply
+            <i
+              class="fa-solid fa-circle-arrow-right"
+              style="font-size: 30px"
+            ></i>
+          </button>
         </div>
       </div>
       <div>
-        <img src="./images/image.png" alt="image" />
+        <img src="./images/image.webp" alt="image" />
+      </div>
+    </section>
+
+    <!-- ---------------------datashow-section -------------------------  -->
+
+    <section class="dataShow-continer" id="dataShow">
+      <div class="box">
+        <div class="box-childimage">
+          <img
+            width="60px"
+            height="60px"
+            style="border-radius: 5rem; border: 4px solid white; position: absolute; top:0; left: 0; z-index: 10;"
+            src="./images/company.webp"
+            alt=""
+          />
+          <img
+            width="60px"
+            height="60px"
+            style="border-radius: 5rem; border: 4px solid white; position: absolute; top:0; left: 15%; z-index: 9;"
+            src="./images/joblist.webp"
+            alt=""
+          />
+          
+        </div>
+        <div class="box-child">
+          <h1 style="font-size: 30px;">100+</h1>
+        <p>Applicent per Day</p>
+        </div>
+      </div>
+      <div class="box box-active">
+        <div class="box-child">
+          <h1>Features</h1>
+        <p>Apply Easily</p>
+        </div>
+        <img
+          width="60px"
+          height="60px"
+          style="border-radius: 5rem; border: 4px solid var(--background);"
+          src="./images/joblist.webp"
+          alt=""
+        />
+      </div>
+      <div class="box">
+        <div class="box-child">
+          <h1>What we do</h1>
+        <p>Help You to get job</p>
+        </div>
+        <p class="box-child-active"><i class="fa-solid fa-arrow-right"></i></p>
+      </div>
+    </section>
+
+    <!-- --------------------explore section----------------------------- -->
+
+    <section class="explore-container">
+      <h1 class="exphead"><span>Services</span> Provide here</h1>
+      <div class="explore-box-container">
+        <div class="explore-box">
+          <i class="iconexp fa-solid fa-file-circle-check"></i>
+          <h1>Verified Job Listings & Smart Job Matching</h1>
+          <p>
+            Access thousands of trusted job opportunities from top companies
+            across various industries. Our intelligent matching system connects
+            you with roles that fit your skills, experience, and career goals.
+          </p>
+          <button id="applybtn" style="cursor: pointer">
+            Apply
+            <i
+              class="fa-solid fa-circle-arrow-right"
+              style="font-size: 30px"
+            ></i>
+          </button>
+        </div>
+        <div class="center-box explore-box">
+          <i class="iconexp fa-solid fa-gears"></i>
+          <h1>Easy Application Process</h1>
+          <p>
+            ACreate one comprehensive profile and use it to apply for multiple
+            job opportunities quickly and effortlessly. Upload your resume,
+            showcase your skills, experience, certifications, and achievements
+            in one place, and avoid the hassle of filling out repetitive
+            application forms.
+          </p>
+          <button class="center" id="applybtn" style="cursor: pointer">
+            Apply
+            <i
+              class="fa-solid fa-circle-arrow-right"
+              style="font-size: 30px"
+            ></i>
+          </button>
+        </div>
+        <div class="explore-box">
+          <i class="iconexp fa-regular fa-comments"></i>
+          <h1>Job Alerts & Notifications</h1>
+          <p>
+            Stay updated with personalized job alerts so you never miss an
+            opportunity.
+          </p>
+          <button id="applybtn" style="cursor: pointer">
+            Apply
+            <i
+              class="fa-solid fa-circle-arrow-right"
+              style="font-size: 30px"
+            ></i>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -90,40 +220,121 @@
       <div class="company-container" id="companylist"></div>
     </section>
 
+    <!-- ---------------------------joblist section-------------------------  -->
+
+    <section class="joblist-container" id="jonblistcontainer">
+      <div class="carousel-wrapper">
+        <button class="nav-btn left" onclick="scrollLeft()">
+          <i class="fa-solid fa-circle-arrow-left arrow"></i>
+        </button>
+
+        <div id="joblist-card" class="carousel-container"></div>
+
+        <button class="nav-btn right" onclick="scrollRight()">
+          <i class="fa-solid fa-circle-arrow-right arrow"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- -------------------contact section----------------------------  -->
+
+    <section class="contact-section" id="contactSection">
+      <div class="contact-box-container">
+        <h1>Contact Us</h1>
+        <p>
+          We are Committed to processing the information <br />
+          in order to contact you and talk about your Jobs.
+        </p>
+        <div class="contact-box">
+          <a href="mailto:alfahadkhan715@gmail.com?subject=Job Query">
+            <i style="padding: 0 20px 0 0" class="fa-regular fa-message"></i
+            >alfahadkhan715@gmail.com</a
+          >
+          <a href="#"
+            ><i style="padding: 0 20px 0 0" class="fa-solid fa-map-location-dot"></i>
+            Bhiali, Chhattisgarh, India</a
+          >
+          <a href="#"
+            ><i style="padding: 0 20px 0 0" class="fa-solid fa-phone"></i> +91
+            6260379325</a
+          >
+        </div>
+      </div>
+      <form id="contactForm">
+        <input id="contactname" type="text" placeholder="Name" />
+        <input id="contactemail" type="email" placeholder="Email" required />
+        <input
+          id="contactphone"
+          type="tel"
+          placeholder="Contact Number"
+          required
+        />
+        <textarea id="contacttext" placeholder="Message" required></textarea>
+        <button class="button-contact" type="submit">Submit</button>
+      </form>
+    </section>
+
     <!-- ---------------------footer section ------------------ -->
 
     <footer class="footer" id="footer">
       <div class="footer-box">
+        <div class="footer-data">
+          <a
+            style="font-size: 30px; font-weight: 600; color: black"
+            href="#hero"
+            >JOB PORTAL</a
+          >
+          <a
+            style="color: black; font-size: 14px"
+            href="mailto:alfahadkhan715@gmail.com"
+            >alfahadkhan715@gmail.com</a
+          >
+          <a style="color: black; font-size: 14px" href="#">+91 6260379325</a>
+          <div class="link-container">
+            <div class="links">
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-telegram"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <div style="padding: 2rem 0" class="subscribe">
+              <span
+                ><input type="email" placeholder="Your Email" required />
+                <button id="subscribe">Subscribe</button></span
+              >
+            </div>
+          </div>
+        </div>
         <div class="linksdata">
           <div class="data">
+            <h1 style="padding: 0.5rem 0; font-size: 18px; color: black">
+              About
+            </h1>
             <a href="#hero">Home</a>
-            <a href="#about">Jobs</a>
-            <a href="#company-list">Company</a>
-            <a href="#contact">Contact</a>
+            <a href="./html/jobportal.html">Jobs</a>
+            <a href="./html/companyDashboard.html">Company</a>
+            <a href="#contactSection">Contact</a>
           </div>
-          <div class="morelinks">
+          <div class="data">
+            <h1 style="padding: 0.5rem 0; font-size: 18px; color: black">
+              About
+            </h1>
             <a href="./html/companyDashboard.html">Post A job</a>
-            <a href="#">Get Placed</a>
+            <a href="#company">Get Placed</a>
             <a href="#">Join us</a>
             <a href="#">Blogs</a>
           </div>
-        </div>
-        <div class="link-container">
-          <div class="links">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-telegram"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          </div>
-          <div style="padding: 2rem 0" class="subscribe">
-            <span
-              ><input type="email" placeholder="Your Email" required />
-              <button id="subscribe">Subscribe</button></span
-            >
+          <div class="data">
+            <h1 style="padding: 0.5rem 0; font-size: 18px; color: black">
+              Product
+            </h1>
+            <a href="./html/termofUse.html">Terms of use</a>
+            <a href="./html/privecypolicy.html">Privacy policy</a>
+            <a href="./html/loginpage.html">Login</a>
           </div>
         </div>
       </div>
-      <p>&copy; Copyright all Rights reserved. Placement 2026</p>
+      <p>&copy; Copyright all Rights reserved. Job portal 2026</p>
     </footer>
 
     <!-- ---------------------script ----------------------->

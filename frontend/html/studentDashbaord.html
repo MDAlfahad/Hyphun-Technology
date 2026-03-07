@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> User Dashboard | Get all Details</title>
+    <link rel="stylesheet" href="../css/studentDashboard.css" />
+
+    <!-- ---------------------font google----------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- -----------font awesome cdn-------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section class="dashboard-container" id="dashboard-container">
+      <div class="navigationContainer" id="navigationContainer">
+        <h1>Profile</h1>
+        <button id="prfilebtn">
+          <span><i class="fa-regular fa-user"></i></span>Profile
+        </button>
+        <button id="formbtn">
+          <span><i class="fa-regular fa-pen-to-square"></i></span>Forms
+        </button>
+        <button id="helpbtn">
+          <span><i class="fa-regular fa-circle-question"></i></span>Help
+        </button>
+        <button id="privacybtn">
+          <span><i class="fa-solid fa-lock"></i></span>Privacy policy
+        </button>
+        <button id="logoutbtn" style="position: absolute; left: 0; bottom: 10%">
+          <span><i class="fa-solid fa-arrow-right-from-bracket"></i></span
+          >logout
+        </button>
+      </div>
+      <div class="rightContainer" id="rightContainer">
+        <!-- ------------------profile sectton-------------------- -->
+        <div class="profile-container content-section" id="profileContainer">
+          <div style="display: flex; align-items: center; gap: 30px">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                position: relative;
+              "
+            >
+              <img width="200px" height="200px" id="img" src="" alt="" />
+              <label
+                style="
+                  background: #088395;
+                  border-radius: 5rem;
+                  color: white;
+                  padding: 1.1rem 1rem;
+                  cursor: pointer;
+                  font-size: 14px;
+                  position: absolute;
+                  bottom: 20%;
+                  right: 0;
+                "
+                for="imageupload"
+                ><i class="fa-regular fa-pen-to-square"></i
+              ></label>
+              <p id="username" style="font-weight: 600; font-size: 18px">
+                MD Alfahad
+              </p>
+              <input id="imageupload" type="file" hidden />
+            </div>
+          </div>
+          <div class="userDetails" id="userDetails">
+            <h1>Personal Information</h1>
+            <div class="userDetailsForm" id="userDetailsForm">
+              <div style="display: flex; gap: 20px; line-height: 40px">
+                <div style="width: 100%">
+                  <label for="firstname">First name</label>
+                  <input
+                    style="width: 100%"
+                    type="text"
+                    id="firstname"
+                    placeholder="First name"
+                  />
+                </div>
+                <div style="width: 100%">
+                  <label for="lastname">Last name</label>
+                  <input
+                    style="width: 100%"
+                    type="text"
+                    id="lastname"
+                    placeholder="Last name"
+                  />
+                </div>
+              </div>
+              <div style="display: flex; width: 15%; padding: 1rem 0">
+                <label for="male">Male</label>
+                <input id="male" type="radio" />
+                <label for="female">Female</label>
+                <input type="radio" id="female" />
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 20px">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your email" />
+                <label for="address">Address</label>
+                <input type="text" id="address" placeholder="Your Address" />
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 20px;
+                  margin: 1rem 0;
+                "
+              >
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+01-222-3333-443" />
+                <label for="Dateofbirth">Date of birth</label>
+                <input
+                  type="date"
+                  id="Dateofbirth"
+                  placeholder="Your Date of Birth"
+                />
+              </div>
+              <div style="display: flex; gap: 20px; margin: 2rem 0">
+                <button id="activebtn">Discard change</button>
+                <button onclick="saveProfile()">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ------------------form section ---------------------------  -->
+        <div class="form-container content-section" id="showFormContainer">
+          <div class="table-wrapper">
+            <table class="form-show">
+              <thead class="form-box">
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Submition date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody class="form-box2" id="formBoxData">
+                <tr>
+                  <th>Md alfahad</th>
+                  <th>Frontend Developer</th>
+                  <th>07/03/2026</th>
+                  <th>pending</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- ------------------------------contact section--------------------------  -->
+        <section class="contact-section-box content-section" id="contactSection">
+          <div class="help-id-container">
+            <h1>How can we <span style="font-size: 40px; color: #088395;">help you?</span></h1>
+            <div class="search-bar">
+              <input type="search" placeholder="Start typing your search..">
+             <i class="fa-brands fa-sistrix"></i>
+            </div>
+            <div class="help-box-container">
+              <div class="help-box">
+                <i class="fa-brands fa-angellist"></i>
+                Getting Started
+                <p style="padding: .4rem; max-width: 200px; text-align: center; color: rgb(146, 146, 146);">Get a chance know how to get start </p>
+              </div>
+              <div class="help-box">
+               <i class="fa-solid fa-suitcase"></i>
+                Apply for Jobs
+                <p style="padding: .4rem; max-width: 200px; text-align: center; color: rgb(146, 146, 146);">How to apply for job! get Start</p>
+              </div>
+              <div class="help-box">
+              <i class="fa-solid fa-book-open"></i>
+                user guide
+                <p style="padding: .4rem; max-width: 200px; text-align: center; color: rgb(146, 146, 146);">Read the user manual to start</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-section">
+            <div class="contact-box-container">
+            <h1>Contact Us</h1>
+            <p>
+              We are Committed to processing the information <br />
+              in order to contact you and talk about your Jobs.
+            </p>
+            <div class="contact-box">
+              <a href="mailto:alfahadkhan715@gmail.com?subject=Job Query">
+                <i style="padding: 0 20px 0 0" class="fa-regular fa-message"></i
+                >alfahadkhan715@gmail.com</a
+              >
+              <a href="#"
+                ><i
+                  style="padding: 0 20px 0 0"
+                  class="fa-solid fa-location"
+                ></i>
+                Bhiali, Chhattisgarh, India</a
+              >
+              <a href="#"
+                ><i style="padding: 0 20px 0 0" class="fa-solid fa-phone"></i>
+                +91 6260379325</a
+              >
+            </div>
+          </div>
+          <form id="contactForm">
+            <input id="contactname" type="text" placeholder="Name" />
+            <input
+              id="contactemail"
+              type="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              id="contactphone"
+              type="tel"
+              placeholder="Contact Number"
+              required
+            />
+            <textarea
+              id="contacttext"
+              placeholder="Message"
+              required
+            ></textarea>
+            <button class="button-contact" type="submit">Submit</button>
+          </form>
+          </div>
+        </section>
+
+        <div class="pravicyContainer content-section" id="privavyContainer">404 NOT FOUND</div>
+      </div>
+    </section>
+
+    <script src="../js/studentDashboard.js"></script>
+    <script>
+      const role = localStorage.getItem("role");
+
+      if (role !== "user") {
+        alert("Access Denied! Login First");
+        window.location.href = "../index.html";
+      }
+    </script>
+  </body>
+</html>

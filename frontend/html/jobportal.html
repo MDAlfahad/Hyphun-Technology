@@ -13,13 +13,65 @@
     />
   </head>
   <body>
-    <div class="jobimageElement">
+    <header>
+      <div class="head">
+        <a class="logo" href="#hero">JOB PORTAL</a>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a href="../index.html"> Get Placement</a>
+          <a href="#joblistdata-show">Jobs</a>
+          <a href="../html/companyDashboard.html">Company</a>
+          <a
+            id="dashbard"
+            href="../html/studentDashbaord.html"
+            style="display: none"
+            >Dashboard</a
+          >
+          <a
+            id="admindashboard"
+            href="./html/adminDashboard.html"
+            style="display: none"
+            >Admin Dashboard</a
+          >
+        </nav>
+
+        <!-- ------------mobile screen 480px---------------- -->
+        <nav class="mobileRes">
+          <a href="#hero">Home</a>
+          <a href="#company">Get Placement</a>
+          <a href="./html/jobportal.html">Jobs</a>
+          <a href="./html/companyDashboard.html">Company</a>
+          <a id="login" href="./html/loginpage.html">Login</a>
+          <a
+            id="dashbard"
+            href="./html/studentD   ashbaord.html"
+            style="display: none"
+            >Dashboard</a
+          >
+          <a
+            id="admindashboard"
+            href="./html/adminDashboard.html"
+            style="display: none"
+            >Admin Dashboard</a
+          >
+        </nav>
+        <button id="login-btn">
+          <i style="font-size: 25px" class="fa-regular fa-user-circle"></i>
+          <h1>LOGIN</h1>
+        </button>
+        <div id="bar" class="bar">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- <div class="jobimageElement">
       <div class="arrow">
         <i style="font-size: 20px" class="fa-solid fa-angles-down"></i>
       </div>
-    </div>
-    <section
-      style= "height: 90vh"
+    </div> -->
+    <section class="joblistdata-show" id="joblistdata-show"
+      style= "height: 100vh;"
     >
       <div class="jobshowlist">
         <div class="jobsearch">
@@ -52,6 +104,69 @@
         </div>
       </div>
     </section>
+
+    <!-- ---------------------footer section ------------------ -->
+
+    <footer class="footer" id="footer">
+      <div class="footer-box">
+        <div class="footer-data">
+          <a
+            style="font-size: 30px; font-weight: 600; color: black"
+            href="#hero"
+            >JOB PORTAL</a
+          >
+          <a
+            style="color: black; font-size: 14px"
+            href="mailto:alfahadkhan715@gmail.com"
+            >alfahadkhan715@gmail.com</a
+          >
+          <a style="color: black; font-size: 14px" href="#">+91 6260379325</a>
+          <div class="link-container">
+            <div class="links">
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-telegram"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <div style="padding: 2rem 0" class="subscribe">
+              <span
+                ><input type="email" placeholder="Your Email" required />
+                <button id="subscribe">Subscribe</button></span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="linksdata">
+          <div class="data">
+            <h1 style="padding: 0.5rem 0; font-size: 18px; color: black">
+              About
+            </h1>
+            <a href="../index.html">Home</a>
+            <a href="../html/jobportal.html">Jobs</a>
+            <a href="../html/companyDashboard.html">Company</a>
+            <a href="../index.html">Contact</a>
+          </div>
+          <div class="data">
+            <h1 style="padding: 0.5rem 0; font-size: 18px; color: black">
+              About
+            </h1>
+            <a href="../html/companyDashboard.html">Post A job</a>
+            <a href="../index.html">Get Placed</a>
+            <a href="#">Join us</a>
+            <a href="#">Blogs</a>
+          </div>
+          <div class="data">
+            <h1 style="padding: 0.5rem 0; font-size: 18px; color: black">
+              Product
+            </h1>
+            <a href="../index.html">Terms of use</a>
+            <a href="../index.html">Privacy policy</a>
+            <a href="./loginpage.html">Login</a>
+          </div>
+        </div>
+      </div>
+      <p>&copy; Copyright all Rights reserved. Job portal 2026</p>
+    </footer>
 
     <script src="../js/jobListDetails.js"></script>
   </body>

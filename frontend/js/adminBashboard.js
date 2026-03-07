@@ -1,102 +1,177 @@
-addEventListener("DOMContentLoaded", (event) => {
-  const dashboardBtn = document.getElementById("dashboard");
-  const tablebtn = document.getElementById("tables");
-  const userbtn = document.getElementById("users");
-  const formBtn = document.getElementById("form");
-  const studentlistbtn = document.getElementById("studentlist");
-  const dashboardSection = document.getElementById("dashboard-container");
-  const formSection = document.getElementById("form-details");
-  const tablesection = document.getElementById("tables-container");
-  const userssection = document.getElementById("users-container");
-  const studentsection = document.getElementById("student-container");
+document.addEventListener("DOMContentLoaded", init);
 
-  const allSections = document.querySelectorAll(".content-section");
+const API_BASE = "http://localhost:5000";
 
-  function hideAll() {
-    allSections.forEach((section) => {
-      section.classList.remove("active");
-    });
+function init() {
+  setupNavigation();
+  loadFormData();
+  loadUsers();
+  loadProfile();
+  setupProfileImage();
+  setupLogout();
+}
+
+function setupNavigation() {
+  const sections = document.querySelectorAll(".content-section");
+
+  const navMap = {
+    dashboard: "dashboard-box",
+    form: "form-details",
+    users: "users-container",
+    company: "student-container",
+  };
+
+  function showSection(id) {
+    sections.forEach((sec) => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
   }
 
-  dashboardSection.classList.add("active");
-
-  dashboardBtn.addEventListener("click", () => {
-    hideAll();
-    dashboardSection.classList.add("active");
+  Object.keys(navMap).forEach((btnId) => {
+    document.getElementById(btnId).addEventListener("click", () => {
+      showSection(navMap[btnId]);
+    });
   });
 
-  formBtn.addEventListener("click", () => {
-    hideAll();
-    formSection.classList.add("active");
+  showSection("dashboard-box");
+}
+
+async function loadFormData() {
+  try {
+    const res = await fetch(`${API_BASE}/formSubData`);
+    const data = await res.json();
+    renderFormData(data);
+  } catch (error) {
+    console.error("Error loading form data:", error);
+  }
+}
+
+function renderFormData(data) {
+  const container = document.getElementById("formBoxData");
+  container.innerHTML = "";
+
+  data.forEach(({ name, position, date }) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${position}</td>
+        <td>${date}</td>
+        <td class="approve-btn">Approve</td>
+      `;
+
+    container.appendChild(row);
   });
-  tablebtn.addEventListener("click", () => {
-    hideAll();
-    tablesection.classList.add("active");
-  });
-  userbtn.addEventListener("click", () => {
-    hideAll();
-    userssection.classList.add("active");
-  });
-  studentlistbtn.addEventListener("click", () => {
-    hideAll();
-    studentsection.classList.add("active");
-  });
+}
 
-  // document.getElementById("logoutbtn").addEventListener("click", () => {
-  //   let role = localStorage.getItem("role");
+async function loadUsers() {
+  try {
+    const res = await fetch(`${API_BASE}/loginData`);
+    const users = await res.json();
+    renderUsers(users);
+  } catch (error) {
+    console.error("Error loading users:", error);
+  }
+}
 
-  //   if (role === "admin") {
-  //     localStorage.removeItem("role");
-  //     window.location.href = "../index.html";
-  //   }
-  // });
-let allData = [];
+function renderUsers(users) {
+  const container = document.getElementById("userdata");
+  container.innerHTML = "";
 
-// 1. Fetch the data once
-fetch("http://localhost:5000/formSubData")
-  .then((res) => res.json())
-  .then((data) => {
-    allData = data; 
-    renderData(allData)
-  });
+  const deactivated = JSON.parse(localStorage.getItem("deactivatedUsers")) || [];
 
+  users.forEach(({ name, email, created_at }) => {
+    const row = document.createElement("tr");
 
-function renderData(dataToDisplay) {
-  const lists = document.getElementById("formBoxData");
-  lists.innerHTML = ""; 
+    const status = deactivated.includes(email) ? "Deactive" : "Active";
 
-  dataToDisplay.forEach((items) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${items.name}</td>
-      <td>${items.position}</td>
-      <td>${items.date}</td>
-      <td class='approve'>Approve</td>
+    row.innerHTML = `
+      <td>${name}</td>
+      <td class="email">${email}</td>
+      <td>${created_at}</td>
+      <td class="status-btn" style="cursor:pointer;background:#8db0b6;color:white">
+        ${status}
+      </td>
     `;
-    lists.appendChild(tr);
+
+    const btn = row.querySelector(".status-btn");
+
+    btn.addEventListener("click", () => toggleUserStatus(email, btn));
+
+    container.appendChild(row);
   });
 }
 
-const searchInput = document.getElementById("searchbar");
-const positionSelect = document.getElementById("select");
+function toggleUserStatus(email, btn) {
+  let deactivated = JSON.parse(localStorage.getItem("deactivatedUsers")) || [];
 
-function applyFilters() {
-  const searchTerm = searchInput.value.toLowerCase();
-  const selectedPosition = positionSelect.value.toLowerCase();
+  if (btn.innerText === "Active") {
+    btn.innerText = "Deactive";
+    deactivated.push(email);
+  } else {
+    btn.innerText = "Active";
+    deactivated = deactivated.filter((e) => e !== email);
+  }
 
-  const filtered = allData.filter((item) => {
-    const matchesSearch = item.name.toLowerCase().includes(searchTerm);
-    const matchesPosition = selectedPosition === "select" || 
-                            item.position.toLowerCase() === selectedPosition;
-    
-    return matchesSearch && matchesPosition;
-  });
-
-  renderData(filtered);
+  localStorage.setItem("deactivatedUsers", JSON.stringify(deactivated));
 }
 
+function setupLogout() {
+  const btn = document.getElementById("logOutbtn");
 
-searchInput.addEventListener("input", applyFilters);
-positionSelect.addEventListener("change", applyFilters);
+  btn.addEventListener("click", () => {
+    if (localStorage.getItem("role") === "admin") {
+      localStorage.removeItem("role");
+      window.location.href = "../html/loginpage.html";
+    }
+  });
+}
 
-});
+function setupProfileImage() {
+  const image = document.getElementById("img");
+  const input = document.getElementById("imageupload");
+
+  const savedImage = localStorage.getItem("profileImage");
+  if (savedImage) image.src = savedImage;
+
+  input.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      image.src = reader.result;
+      localStorage.setItem("profileImage", reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+function saveProfile() {
+  const profile = {
+    firstname: document.getElementById("firstname").value,
+    lastname: document.getElementById("lastname").value,
+    email: document.getElementById("email").value,
+    gender: document.querySelector('input[name="gender"]:checked')?.value || "",
+    address: document.getElementById("address").value,
+    phone: document.getElementById("phone").value,
+    dob: document.getElementById("Dateofbirth").value,
+  };
+
+  localStorage.setItem("adminprofile", JSON.stringify(profile));
+  alert("Profile saved!");
+}
+
+function loadProfile() {
+  const profile = JSON.parse(localStorage.getItem("adminprofile"));
+
+  if (!profile) return;
+
+  document.getElementById("firstname").value = profile.firstname;
+  document.getElementById("lastname").value = profile.lastname;
+  document.getElementById("email").value = profile.email;
+  document.getElementById("address").value = profile.address;
+  document.getElementById("phone").value = profile.phone;
+  document.getElementById("Dateofbirth").value = profile.dob;
+}

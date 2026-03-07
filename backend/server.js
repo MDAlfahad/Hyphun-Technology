@@ -32,6 +32,17 @@ app.post("/register", async (req, res) => {
   }
 });
 
+app.get("/loginData", (req, res)=>{
+  // const{name, email, created_at, role} = req.body;
+
+  const sql= `SELECT name, email, created_at, role FROM login_user`;
+  db.query(sql, (err, result)=>{
+    if(err) return res.status(501).send("failed to get userData");
+    res.json(result);
+  });
+});
+
+
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -63,6 +74,21 @@ app.post("/login", async (req, res) => {
   );
 });
 
+app.get("/currentUser/:id", (req, res) => {
+
+  const userId = req.params.id;
+
+  const sql = "SELECT name,email FROM login)user WHERE id = ?";
+
+  db.query(sql, [userId], (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(result[0]);
+    }
+  });
+
+});
 app.post("/formData", (req, res) => {
   const form = new formidable.IncomingForm();
 
@@ -135,7 +161,7 @@ app.post("/jobformdata", (req, res) => {
       jobType,
       location,
       startDate,
-      CTC,
+      amount,
       applydate,
       skills,
       description,
@@ -147,7 +173,7 @@ app.post("/jobformdata", (req, res) => {
     const formId = uuidv4();
 
     const sql =
-      "INSERT INTO job_postdata(id, title, companyName, experience, jobType, location, startDate, CTC, applydate, skills, description,aboutcompany, requirement) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+      "INSERT INTO job_postdata(id, title, companyName, experience, jobType, location, startDate, amount, applydate, skills, description,aboutcompany, requirement) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
     db.query(
       sql,
@@ -159,7 +185,7 @@ app.post("/jobformdata", (req, res) => {
         jobType,
         location,
         startDate,
-        CTC,
+        amount,
         applydate,
         skills,
         description,

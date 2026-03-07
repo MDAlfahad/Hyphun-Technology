@@ -13,28 +13,28 @@ fetch("http://localhost:5000/jobdata")
 function showJobDetails(data) {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
-  console.log("id", id);
 
   const post = data.find((p) => p.title === id);
-  console.log(post);
 
   if (post) {
     document.getElementById("heading").textContent = post.title;
     document.getElementById("head").textContent = post.title;
     document.getElementById("company").textContent = post.companyName;
     document.getElementById("experience").textContent = post.experience;
-    document.getElementById("anuual").textContent = post.CTC;
+    document.getElementById("amount").textContent = post.amount;
     document.getElementById("date").textContent = post.startDate;
     document.getElementById("applydate").textContent = post.applydate;
     document.getElementById("type").textContent = post.jobType;
-    document.getElementById("requirement").textContent = post.requirement.replace(/\n/g, "<br>");
-    document.getElementById("jobdetails").textContent = post.description.replace(/\n/g, "<br>");
+    document.getElementById("requirement").textContent = post.requirement;
+    document.getElementById("jobdetails").textContent = post.description;
     document.getElementById("skills").textContent = post.Skills;
     document.getElementById("location").textContent = post.location;
 
     document.getElementById("applybtn").addEventListener("click", () => {
       localStorage.setItem("selectedJob", JSON.stringify(post));
-      window.location.href = '../html/userInrollForm.html';
+      // window.location.href = '../html/userInrollForm.html';
+      alert("Applied Sucessfully")
+      window.location.href = '../html/jobportal.html'
     });
   } else {
     console.warn("Job not found for id:", id);

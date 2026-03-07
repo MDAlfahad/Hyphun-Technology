@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login | Placement</title>
+    <title> Accounts</title>
 
     <link rel="stylesheet" href="../css/login.css" />
 
@@ -16,12 +16,15 @@
   <body>
     <section class="loginPage">
       <div class="left-container">
-        <img src="../images/image copy.png" alt="" />
+       <div class="shape">
+         <img src="../images/login.webp" alt="" />
+       </div>
+       
       </div>
-      <div class="box-container"  id="login-form" style="display: none";>
+      <div class="box-container"  id="login-form" ;>
         <h1>LOGIN</h1>
 
-        <form action="submit" id="form-login">
+        <form action="submit" onsubmit="login(event)" id="form-login">
           <input id="login-email" type="email" placeholder="Email" required />
           <input
             id="login-password"
@@ -29,7 +32,7 @@
             placeholder="Password"
             required
           />
-          <p id="invalidlogin"></p>
+          <p id="invalidlogin" style="color: red;"></p>
           <button id="btn" type="submit">LOGIN</button>
         </form>
         <p>Don't have account?<a onclick="signup()" href="#signupform"> Signup</a></p>
@@ -38,44 +41,49 @@
           <p>or login with</p>
           <hr />
         </div>
-        <div class="links">
-          <i class="fa-brands fa-google"></i>
-          <i class="fa-brands fa-linkedin"></i>
+        <div class="links" >
+          <div class="links-img" style="padding: .5rem;">
+            <img width="30px" style="display: block;" src="../images/google.png" alt="image"> <p>Continue With Google</p>
+          </div>
         </div>
       </div>
 
 
-      <div class="box-container" id="signupform" >
+      <div class="box-container" id="signupform" style="display: none;" >
         <h1>Create Account</h1>
-
-        <form id="form-signup">
+        
+        <form id="form-signup" class="form-signup">
+          
           <input id="sign-name" type="text" placeholder="Name" required />
-          <input id="mobile-num" type="number" placeholder="Mobile" required />
+         
           <input id="sign-email" type="email" placeholder="Email" required />
+        
           <input
             id="sign-password"
             type="Password"
             placeholder="Password"
             required
           />
+        
           <input
             id="sign-re-password"
             type="password"
             placeholder="Password"
             required
           />
-          <p id="invalidpass"></p>
-          <button id="sign-btn" type="submit">Create Account</button>
+          <p id="invalidpass" style="color: red;"></p>
+          <button id="sign-btn" style="border-radius: 5px;" type="submit">Create Account</button>
         </form>
         <p>Already have account?<a onclick="login()" href="#signupform"> Login</a></p>
         <div class="loginWith">
           <hr />
-          <p>or login with</p>
+          <p>or continue with</p>
           <hr />
         </div>
         <div class="links">
-          <i class="fa-brands fa-google"></i>
-          <i class="fa-brands fa-linkedin"></i>
+          <div class="links-img" style="padding: .5rem;">
+            <img width="30px" style="display: block;" src="../images/google.png" alt="image"> <p>Continue With Google</p>
+          </div>
         </div>
       </div>
     </section>

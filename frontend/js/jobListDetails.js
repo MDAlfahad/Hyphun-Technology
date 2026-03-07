@@ -23,7 +23,7 @@ window.onload = function () {
     <p>${items.companyName}</p>
     <hr >
     <p class ='location'> <i class='fa-solid fa-location'></i> ${items.location}</p>
-    <p>${items.skills}</p>
+    <p>${items.Skills}</p>
     <p class='detail'>View Details <i class='fa-solid fa-arrow-right' style='margin-left:20px;'></i></p>
     `;
 
@@ -38,3 +38,29 @@ window.onload = function () {
   }
 
 };
+
+
+const menuBtn = document.getElementById("bar");
+const navSmall = document.querySelector(".mobileRes");
+const loginbtn = document.getElementById("login-btn");
+const showbtn = document.getElementById("box-container");
+
+document.getElementById("login-btn").addEventListener("click", () => {
+  window.location.href = './html/loginpage.html'
+});
+
+document.getElementById("bar").addEventListener("click", () => {
+  document.querySelector(".mobileRes").classList.toggle("show");
+});
+
+const useRole = localStorage.getItem("role");
+if (useRole === "user") {
+  document.getElementById("login-btn").style.display = "none";
+  document.getElementById("dashbard").style.display = "block";
+  document.getElementById("admindashboard").style.display = "none";
+}
+if (useRole === "admin"){
+  document.getElementById("login-btn").style.display = "none";
+  document.getElementById("dashbard").style.display = "none";
+  document.getElementById("admindashboard").style.display = "block";
+}
