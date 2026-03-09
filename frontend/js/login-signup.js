@@ -55,8 +55,7 @@ formlogin.addEventListener("submit", async (e) => {
 
   const email = document.getElementById("login-email").value.trim();
   const password = document.getElementById("login-password").value.trim();
-   const invalidPass = document.getElementById("invalidlogin");
-
+  const invalidPass = document.getElementById("invalidlogin");
 
   fetch("http://localhost:5000/login", {
     method: "POST",
@@ -71,27 +70,23 @@ formlogin.addEventListener("submit", async (e) => {
         localStorage.setItem("role", data.role);
         localStorage.setItem("name", data.name);
       } else {
-        invalidPass.textContent =" invlaid Email or password"
+        invalidPass.textContent = " invlaid Email or password";
       }
     });
 
-    let role = localStorage.getItem('role');
-    if(role ==="admin"){
-      window.location.href= "../html/adminDashboard.html"
-    } else if(role === "user"){
-      window.location.href= "../index.html"
-    }
+  let role = localStorage.getItem("role");
+  if (role === "admin") {
+    window.location.href = "../html/adminDashboard.html";
+  } else if (role === "user") {
+    window.location.href = "../index.html";
+  }
 
-   let deactivate = localStorage.getItem("deactivate");
-let bannedemail = document.getElementById("login-email").value;  
+  let deactivate = JSON.parse(localStorage.getItem("deactivatedUsers")) || [];
+  let bannedemail = document.getElementById("login-email").value;
 
-if (deactivate && deactivate === bannedemail) {
-  alert("You are banned");
-  return;
-  
-}
-console.log("Login allowed");
- 
-  });
-
-
+  if (deactivate && deactivate === bannedemail) {
+    alert("You are banned");
+    return;
+  }
+  console.log("Login allowed");
+});

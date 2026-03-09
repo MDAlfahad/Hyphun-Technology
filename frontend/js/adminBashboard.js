@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", init);
 
 const API_BASE = "http://localhost:5000";
-
 function init() {
   setupNavigation();
   loadFormData();
-  loadUsers();
   loadProfile();
   setupProfileImage();
   setupLogout();
+  userDetails();
 }
 
 function setupNavigation() {
@@ -63,57 +62,59 @@ function renderFormData(data) {
   });
 }
 
-async function loadUsers() {
-  try {
-    const res = await fetch(`${API_BASE}/loginData`);
-    const users = await res.json();
-    renderUsers(users);
-  } catch (error) {
-    console.error("Error loading users:", error);
-  }
+// ---------------------user Details------------------ 
+
+// function userDetails(){
+//   try{const res =  fetch(`${API_BASE}/loginData`)
+// const data = res.json();
+// showLoginData(data)
+// }catch (err){
+//   console.error("Error in getting users details", err);
+// }
+// }
+
+function userDetails() {
+
+  fetch(`${API_BASE}/loginData`)
+  .then((res)=> res.json())
+  .then((data)=> {
+    allData = data
+    showLoginData(allData)
+  })
 }
 
-function renderUsers(users) {
-  const container = document.getElementById("userdata");
-  container.innerHTML = "";
+function showLoginData(data) {
+const container = document.getElementById("userdata");
+container.innerHTML = ""
 
-  const deactivated = JSON.parse(localStorage.getItem("deactivatedUsers")) || [];
+data.forEach(({email,role, created_at, status })=>{
+  const row = document.createElement("tr");
 
-  users.forEach(({ name, email, created_at }) => {
-    const row = document.createElement("tr");
+  row.innerHTML = `
+  <td>${email}</td>
+        <td>${role}</td>
+        <td>${created_at}</td>
+        <td class="status" onclick="togglestatus(1)">Active</td>
+        <td class="delete">Delete</td>
 
-    const status = deactivated.includes(email) ? "Deactive" : "Active";
+  `
 
-    row.innerHTML = `
-      <td>${name}</td>
-      <td class="email">${email}</td>
-      <td>${created_at}</td>
-      <td class="status-btn" style="cursor:pointer;background:#8db0b6;color:white">
-        ${status}
-      </td>
-    `;
-
-    const btn = row.querySelector(".status-btn");
-
-    btn.addEventListener("click", () => toggleUserStatus(email, btn));
-
-    container.appendChild(row);
-  });
+  container.appendChild(row)
+})
 }
 
-function toggleUserStatus(email, btn) {
-  let deactivated = JSON.parse(localStorage.getItem("deactivatedUsers")) || [];
+function togglestatus(id, status){
+  fetch(`${API_BASE}/update_user`, {
+    method : "POST", 
+    body: JSON.stringify({id, status})
+  })
+  .then(res=> res.json())
+  .then(data=> alert(data.message))
+  .catch(err=> console.log("failed to update data"))
+} 
 
-  if (btn.innerText === "Active") {
-    btn.innerText = "Deactive";
-    deactivated.push(email);
-  } else {
-    btn.innerText = "Active";
-    deactivated = deactivated.filter((e) => e !== email);
-  }
 
-  localStorage.setItem("deactivatedUsers", JSON.stringify(deactivated));
-}
+// -----------------logout function----------------------------
 
 function setupLogout() {
   const btn = document.getElementById("logOutbtn");
@@ -129,7 +130,7 @@ function setupLogout() {
 function setupProfileImage() {
   const image = document.getElementById("img");
   const input = document.getElementById("imageupload");
-
+  
   const savedImage = localStorage.getItem("profileImage");
   if (savedImage) image.src = savedImage;
 

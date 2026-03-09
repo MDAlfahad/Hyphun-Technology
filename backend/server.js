@@ -11,13 +11,15 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, status } = req.body;
   try {
     const hashed = await bcrypt.hash(password, 10);
 
+    const status = 1;
+
     db.query(
-      "INSERT INTO login_user (name, email, password) VALUES(?, ?, ?)",
-      [name, email, hashed],
+      "INSERT INTO login_user (name, email, password, status) VALUES(?, ?, ?)",
+      [name, email, hashed, status],
       (err) => {
         if (err) return res.status(400).json({ err: "User Alredy exists" });
         res.json({
@@ -32,16 +34,31 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.get("/loginData", (req, res)=>{
-  // const{name, email, created_at, role} = req.body;
+app.get("/loginData", (req, res) => {
+  // const{name, email, created_at, role, status} = req.body;
 
-  const sql= `SELECT name, email, created_at, role FROM login_user`;
-  db.query(sql, (err, result)=>{
-    if(err) return res.status(501).send("failed to get userData");
+  const sql = `SELECT name, email, created_at, role, status FROM login_user`;
+  db.query(sql, (err, result) => {
+    if (err) return res.status(501).send("failed to get userData");
     res.json(result);
   });
 });
 
+app.post("/update_user", (req, res) => {
+  const { id, status } = req.body;
+
+  if(id=== undefined || status=== undefined){
+    return res.status(400).json({mesage:" user Id required"})
+  }
+
+  const state = status === 1 ? 0 : 1;
+
+  const sql = `UPDATE login_user  SET status=? WHERE id  = ?`;
+  db.query(sql, [state, id], (err, result) => {
+    if (err) return res.status(500).send("failed to Update Data");
+    res.json(result);
+  });
+});
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -75,7 +92,6 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/currentUser/:id", (req, res) => {
-
   const userId = req.params.id;
 
   const sql = "SELECT name,email FROM login)user WHERE id = ?";
@@ -87,7 +103,6 @@ app.get("/currentUser/:id", (req, res) => {
       res.json(result[0]);
     }
   });
-
 });
 app.post("/formData", (req, res) => {
   const form = new formidable.IncomingForm();
@@ -169,7 +184,6 @@ app.post("/jobformdata", (req, res) => {
       requirement,
     } = fields;
 
-
     const formId = uuidv4();
 
     const sql =
@@ -193,11 +207,12 @@ app.post("/jobformdata", (req, res) => {
         requirement,
       ],
       (err, result) => {
-        if (err){
-          console.log('err', err)
-          return res.status(500).send("failed to Post Job");} 
+        if (err) {
+          console.log("err", err);
+          return res.status(500).send("failed to Post Job");
+        }
 
-     return  res.status(200).json({
+        return res.status(200).json({
           message: "Job posted successfully",
           id: formId,
           sucess: true,
@@ -207,14 +222,13 @@ app.post("/jobformdata", (req, res) => {
   });
 });
 
-app.get("/jobdata", (req, res)=>{
+app.get("/jobdata", (req, res) => {
   const sql = "SELECT * FROM job_postdata";
-  db.query(sql, (err, result)=>{
-    
-    if(err) return res.status(500).send("failed to load data");
-    res.json(result)
-  })
-})
+  db.query(sql, (err, result) => {
+    if (err) return res.status(500).send("failed to load data");
+    res.json(result);
+  });
+});
 
 app.listen(5000, () => {
   console.log("server runngin on port 5000");
