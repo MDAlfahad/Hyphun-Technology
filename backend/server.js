@@ -18,7 +18,7 @@ app.post("/register", async (req, res) => {
     const status = 1;
 
     db.query(
-      "INSERT INTO login_user (name, email, password, status) VALUES(?, ?, ?)",
+      "INSERT INTO login_user (name, email, password, status ) VALUES(?, ?, ?,1)",
       [name, email, hashed, status],
       (err) => {
         if (err) return res.status(400).json({ err: "User Alredy exists" });
@@ -35,28 +35,39 @@ app.post("/register", async (req, res) => {
 });
 
 app.get("/loginData", (req, res) => {
-  // const{name, email, created_at, role, status} = req.body;
-
-  const sql = `SELECT name, email, created_at, role, status FROM login_user`;
+  const sql = `SELECT id,  name, email, created_at, role, status FROM login_user`;
   db.query(sql, (err, result) => {
     if (err) return res.status(501).send("failed to get userData");
     res.json(result);
   });
 });
 
+// app.get("/loginstate", (req, res)=>{
+//   const sql =  `SELECT status FROM loin_user`;
+//   db.query(sql,(err, result)=>{
+//     if(err) return res.status(501).json({message:"failed to get status"});
+//     res.json(result);
+//   } )
+// })
+
 app.post("/update_user", (req, res) => {
   const { id, status } = req.body;
 
-  if(id=== undefined || status=== undefined){
-    return res.status(400).json({mesage:" user Id required"})
+  if (id === undefined || status === undefined) {
+    return res.status(400).json({ message: "User status are required" });
   }
+    
+  const sql = `UPDATE login_user SET status=? WHERE id = ?`;
+  db.query(sql, [status, id], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ message: "Failed to update data" });
+    }
 
-  const state = status === 1 ? 0 : 1;
-
-  const sql = `UPDATE login_user  SET status=? WHERE id  = ?`;
-  db.query(sql, [state, id], (err, result) => {
-    if (err) return res.status(500).send("failed to Update Data");
-    res.json(result);
+    if (result.affectedRows === 0) {
+        return res.status(404).json({ message: "User not found" });
+      }
+    res.json({ message: "Status updated successfully", updatedStatus: status });
   });
 });
 
@@ -86,6 +97,7 @@ app.post("/login", async (req, res) => {
         message: "login sucessfull",
         role: user.role,
         name: user.name,
+        status: user.status,
       });
     },
   );
@@ -94,7 +106,7 @@ app.post("/login", async (req, res) => {
 app.get("/currentUser/:id", (req, res) => {
   const userId = req.params.id;
 
-  const sql = "SELECT name,email FROM login)user WHERE id = ?";
+  const sql = "SELECT name, email FROM login_user WHERE id = ?";
 
   db.query(sql, [userId], (err, result) => {
     if (err) {
@@ -206,16 +218,12 @@ app.post("/jobformdata", (req, res) => {
         aboutcompany,
         requirement,
       ],
-      (err, result) => {
-        if (err) {
-          console.log("err", err);
-          return res.status(500).send("failed to Post Job");
-        }
-
-        return res.status(200).json({
-          message: "Job posted successfully",
-          id: formId,
+      (err) => {
+        if (err) return res.status(400).json({ err: "form not uploaded" });
+        res.json({
           sucess: true,
+          statusCode: 201,
+          message: "Register Sucessfully",
         });
       },
     );

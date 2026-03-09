@@ -62,16 +62,6 @@ function renderFormData(data) {
   });
 }
 
-// ---------------------user Details------------------ 
-
-// function userDetails(){
-//   try{const res =  fetch(`${API_BASE}/loginData`)
-// const data = res.json();
-// showLoginData(data)
-// }catch (err){
-//   console.error("Error in getting users details", err);
-// }
-// }
 
 function userDetails() {
 
@@ -80,40 +70,46 @@ function userDetails() {
   .then((data)=> {
     allData = data
     showLoginData(allData)
-  })
+  })    
 }
+
 
 function showLoginData(data) {
 const container = document.getElementById("userdata");
 container.innerHTML = ""
 
-data.forEach(({email,role, created_at, status })=>{
+data.forEach(({email,role, created_at, id,  status })=>{
   const row = document.createElement("tr");
 
   row.innerHTML = `
   <td>${email}</td>
         <td>${role}</td>
         <td>${created_at}</td>
-        <td class="status" onclick="togglestatus(1)">Active</td>
+       <td class="status" onclick="togglestatus(${id}, ${status})">
+        ${status === 1 ? "Active" : "Inactive"}
+      </td>
         <td class="delete">Delete</td>
-
   `
 
   container.appendChild(row)
 })
 }
-
-function togglestatus(id, status){
+  function togglestatus( id, status){
+    const newStatus =   status === 1 ? 0 : 1;
+    
   fetch(`${API_BASE}/update_user`, {
-    method : "POST", 
-    body: JSON.stringify({id, status})
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({id, status:newStatus })
   })
-  .then(res=> res.json())
-  .then(data=> alert(data.message))
-  .catch(err=> console.log("failed to update data"))
+  .then(res => res.json())
+  .then(data => alert(data.message || "Status updated successfully"))
+  .catch(err => console.log("Failed to update data", err));
 } 
 
-
+  
 // -----------------logout function----------------------------
 
 function setupLogout() {

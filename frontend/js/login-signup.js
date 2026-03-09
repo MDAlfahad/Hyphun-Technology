@@ -9,44 +9,44 @@ function login() {
 
 const formSignup = document.getElementById("form-signup");
 
-formSignup.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  formSignup.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const name = document.getElementById("sign-name").value.trim();
-  const email = document.getElementById("sign-email").value.trim();
-  const password = document.getElementById("sign-password").value.trim();
-  const repass = document.getElementById("sign-re-password").value.trim();
-  const invalidPass = document.getElementById("invalidpass");
+    const name = document.getElementById("sign-name").value.trim();
+    const email = document.getElementById("sign-email").value.trim();
+    const password = document.getElementById("sign-password").value.trim();
+    const repass = document.getElementById("sign-re-password").value.trim();
+    const invalidPass = document.getElementById("invalidpass");
 
-  if (password !== repass) {
-    invalidPass.textContent = "Passwords do not match";
-    return;
-  } else {
-    invalidPass.textContent = "";
-  }
+    if (password !== repass) {
+      invalidPass.textContent = "Passwords do not match";
+      return;
+    } else {
+      invalidPass.textContent = "";
+    }
 
-  fetch("http://localhost:5000/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: name,
-      email: email,
-      password: password,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Server Response:", data);
-      alert(data.message);
+    fetch("http://localhost:5000/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name, 
+        email: email,
+        password: password,
+      }),
     })
-    .catch((err) => {
-      console.log("Error:", err);
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Server Response:", data);
+        alert(data.message);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
 
-  window.location.href = login();
-});
+    login();
+  });
 
 const formlogin = document.getElementById("form-login");
 
@@ -66,6 +66,10 @@ formlogin.addEventListener("submit", async (e) => {
   })
     .then((res) => res.json())
     .then((data) => {
+       if(data.status != 1){
+        alert("You are restrected")
+        return
+       }
       if (data.message === "login sucessfull") {
         localStorage.setItem("role", data.role);
         localStorage.setItem("name", data.name);
@@ -80,13 +84,4 @@ formlogin.addEventListener("submit", async (e) => {
   } else if (role === "user") {
     window.location.href = "../index.html";
   }
-
-  let deactivate = JSON.parse(localStorage.getItem("deactivatedUsers")) || [];
-  let bannedemail = document.getElementById("login-email").value;
-
-  if (deactivate && deactivate === bannedemail) {
-    alert("You are banned");
-    return;
-  }
-  console.log("Login allowed");
-});
+})

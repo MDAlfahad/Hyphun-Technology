@@ -74,9 +74,10 @@ function loadProfile() {
     document.getElementById("address").value = userprofiledata.address;
     document.getElementById("phone").value = userprofiledata.address;
     document.getElementById("Dateofbirth").value = userprofiledata.Dateofbirth;
-  } else if(discard){
-    alert("Profile Not Saved")
   }
+  discard.addEventListener("click", ()=>{
+    alert("frofile not save")
+  })
   
 }
 
