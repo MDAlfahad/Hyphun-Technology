@@ -42,21 +42,69 @@ app.get("/loginData", (req, res) => {
   });
 });
 
-// app.get("/loginstate", (req, res)=>{
-//   const sql =  `SELECT status FROM loin_user`;
-//   db.query(sql,(err, result)=>{
-//     if(err) return res.status(501).json({message:"failed to get status"});
-//     res.json(result);
-//   } )
-// })
+app.post("/companyData", async (req, res) => {
+  const { name, email, password, status } = req.body;
+  try {
+    const passowrdhas = await bcrypt.hash(password, 10);
+    const status = 1;
 
-app.post("/update_user", (req, res) => {
+    const sql = `INSERT INTO company_data (name, email, password, status) VALUES(?, ?, ?, ?)`;
+
+    db.query(sql, [name, email, passowrdhas, status], (err) => {
+      if (err)
+        return res.status(400).json({ message: "failed to upload data" });
+      res.json({
+        sucess: true,
+        statusCode: 200,
+        message: "upload sucessful",
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ error: "server error" });
+  }
+});
+
+app.get("/companyusersdata", (req, res) => {
+  const sql = "SELECT * FROM company_data";
+
+  db.query(sql, (err, result) => {
+    if (err) return res.status(500).json({
+        success: false,
+        message: "Failed to get data",
+      });
+    res.json(result) ;
+  });
+});
+
+app.post("/update_companyuser", (req, res) => {
   const { id, status } = req.body;
-
+  
   if (id === undefined || status === undefined) {
     return res.status(400).json({ message: "User status are required" });
   }
-    
+
+  const sql = `UPDATE company_data SET status=? WHERE id = ?`;
+  db.query(sql, [status, id], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ message: "Failed to update data" });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json({ message: "Status updated successfully", updatedStatus: status });
+  });
+});
+
+
+app.post("/update_user", (req, res) => {
+  const { id, status } = req.body;
+  
+  if (id === undefined || status === undefined) {
+    return res.status(400).json({ message: "User status are required" });
+  }
+
   const sql = `UPDATE login_user SET status=? WHERE id = ?`;
   db.query(sql, [status, id], (err, result) => {
     if (err) {
@@ -65,8 +113,8 @@ app.post("/update_user", (req, res) => {
     }
 
     if (result.affectedRows === 0) {
-        return res.status(404).json({ message: "User not found" });
-      }
+      return res.status(404).json({ message: "User not found" });
+    }
     res.json({ message: "Status updated successfully", updatedStatus: status });
   });
 });
