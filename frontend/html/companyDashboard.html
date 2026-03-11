@@ -1,27 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Company | Post Job | Overview</title>
-    <link rel="stylesheet" href="../css/companyDashboard.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/companyDashboard.css" />
+
+    <!-- -----------font awesome cdn-------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <!-- ---------------------font google----------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <section class="company" id="company">
-        <h1>Small, consistent contributions can make a significant difference, </h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi quo impedit totam vel?</p>
-       <div >
-         <button id="postjob">Post And Manage Jobs</button>
-       </div>
+      <div class="left-container">
+        <h1><span style="font-size: 30px">Company</span> Dashboard</h1>
+        <p id="dashboardbtn">Dashboard</p>
+        <p id="applicantbtn">Applicant</p>
+        <p id="logoutbtn" class="logout">Logout</p>
+      </div>
+      <div class="rightcontainer">
+        <div class="companyDashboard container-section" id="companyDashboard">
+          <div class="dataContainer">
+            <div>
+              <h1>Dashboard</h1>
+              <p>Add and mannage data</p>
+            </div>
+            <div>
+              <button class="dataactive" id="postjob">
+                <i class="fa-solid fa-plus"></i> Post Job
+              </button>
+              <label class="importdata" for="importdata">Import</label>
+              <input type="file" id="importdata" hidden />
+            </div>
+          </div>
+
+          <div class="data-container">
+            <div class="box">
+              <h1>Total applicant</h1>
+              <h2 id="userCount"></h2>
+            </div>
+            <div class="box">
+              <h1>Job Posted</h1>
+              <h2>30+</h2>
+            </div>
+          </div>
+
+          <!-- post job details------------------------  -->
+          <section class="container" id="joblist">
+            <div id="jobform" style="display: none">
+              <i
+                id="closebtn"
+                style="font-size: 30px"
+                class="fa-solid fa-circle-xmark"
+              ></i>
+              <form action="submit">
+                <h1>Fill Requirements</h1>
+
+                <label for="title">Title</label>
+                <input type="text" id="title" required />
+
+                <label for="companyName">Company name</label>
+                <input type="text" id="companyName" required />
+
+                <label for="experience">Experience</label>
+                <input type="text" id="experience" required />
+                <label for="jobType">Job Type</label>
+                <select name="Job-Type" id="jobType">
+                  <option value="">Select Job Type</option>
+                  <option value="partTime">Part-Time</option>
+                  <option value="fullTime">Full-Time</option>
+                  <option value="remote">Remote</option>
+                </select>
+                <label for="location">Location</label>
+                <input type="text" id="location" required />
+
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" required />
+
+                <label for="package">CTC (ANNUAL)</label>
+                <input type="text" id="package" required />
+                <label for="applydate">Apply Date</label>
+                <input type="date" id="applydate" required />
+
+                <label for="skills">Skills</label>
+                <input type="text" id="skills" required />
+
+                <label for="description"> Description </label>
+                <textarea id="description" type="text" required></textarea>
+
+                <label for="aboutcompany"> About this Company </label>
+                <textarea id="aboutcompany" type="text" required></textarea>
+
+                <label for="requirement">Other Requirement</label>
+                <textarea
+                  name="requirement"
+                  id="requirement"
+                  type="text"
+                ></textarea>
+                <div class="btn">
+                  <button id="button" type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- ----------- posted job view-------------------- -->
+            <div class="selection">
+              <div class="search">
+                <input type="search" id="searchbar" placeholder="Search Job" />
+                <i class="fa-brands fa-sistrix"></i>
+              </div>
+              <select name="location" id="jobTypeFilter" class="input">
+                <option value="">Job Type</option>
+                <option value="fullTime">Full time</option>
+                <option value="partTime">Part Time</option>
+                <option value="remote">Remote</option>
+              </select>
+            </div>
+            <div class="joblist" id="postedJobData"></div>
+          </section>
+        </div>
+
+        <div
+          class="applicationContainer container-section"
+          id="applicationContainer"
+        >
+          <div class="table-wrapper">
+            <table class="form-show">
+              <thead class="form-box">
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Submition date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody class="form-box2" id="formBoxData">
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </section>
 
     <script src="../js/companyDashboard.js"></script>
-    <script>
-       const role = localStorage.getItem("role");
-  if(role !== "admin" && role!== "user"){
-      alert("access Denied! Login First!")
-      window.location.href = "../html/loginpage.html"
-    }
-    </script>
-</body>
+  </body>
 </html>

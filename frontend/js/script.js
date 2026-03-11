@@ -75,13 +75,14 @@ fetch("http://localhost:5000/jobdata")
       <h2>${items.jobType}</h2>
       <h2>₹${items.amount}</h2>
       <p>${items.Skills}</p>
-      <button id='button'>View Details</button>
+      <button id='buttonbtn'>View Details</button>
     `;
-
-    card.onclick = ()=>{
-      window.location.href =`./html/showJobData.html?id=${items.title}`;
-    }
     container.appendChild(card);
+
+    document.getElementById("buttonbtn").addEventListener("click",  ()=>{
+      window.location.href =`./html/showJobData.html?id=${items.title}`;
+    });
+    
   });
 }
 

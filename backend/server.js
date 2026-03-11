@@ -151,19 +151,18 @@ app.post("/login", async (req, res) => {
   );
 });
 
-app.get("/currentUser/:id", (req, res) => {
-  const userId = req.params.id;
+app.get('/user-count', async (req, res) => {
+  try {
+    const [result] = await db.query("SELECT COUNT(*) AS total_users FROM job_form");
+    console.log(result);
+    res.json(result[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }
+})
 
-  const sql = "SELECT name, email FROM login_user WHERE id = ?";
 
-  db.query(sql, [userId], (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.json(result[0]);
-    }
-  });
-});
 app.post("/formData", (req, res) => {
   const form = new formidable.IncomingForm();
 
@@ -184,11 +183,11 @@ app.post("/formData", (req, res) => {
     const formId = uuidv4();
 
     const sql =
-      "INSERT INTO job_form(user_id, name, type, email, position, city, landmark, address, birthdate, tel ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO job_form(user_id, name, type, email, position, city, landmark, address, birthdate, tel) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     db.query(
       sql,
-      [
+      [ 
         formId,
         name,
         type,
@@ -212,13 +211,14 @@ app.post("/formData", (req, res) => {
         });
       },
     );
-  });
+  }); 
 });
 
 app.get("/formSubData", (req, res) => {
-  const sql = `SELECT name, position, date FROM job_form`;
+  const sql = `SELECT name, email,  position, date FROM job_form`;
 
   db.query(sql, (err, result) => {
+    console.log(err)
     if (err) return res.status(501).send("faild to get Data");
     res.json(result);
   });
@@ -247,7 +247,7 @@ app.post("/jobformdata", (req, res) => {
     const formId = uuidv4();
 
     const sql =
-      "INSERT INTO job_postdata(id, title, companyName, experience, jobType, location, startDate, amount, applydate, skills, description,aboutcompany, requirement) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+      "INSERT INTO job_postdata(id, title, companyName, experience, jobType , location, startDate, CTC, applydate, skills, description,aboutcompany, otherRequirement) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
     db.query(
       sql,
@@ -267,6 +267,7 @@ app.post("/jobformdata", (req, res) => {
         requirement,
       ],
       (err) => {
+        console.log(err)
         if (err) return res.status(400).json({ err: "form not uploaded" });
         res.json({
           sucess: true,

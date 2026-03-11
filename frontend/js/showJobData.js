@@ -32,9 +32,7 @@ function showJobDetails(data) {
 
     document.getElementById("applybtn").addEventListener("click", () => {
       localStorage.setItem("selectedJob", JSON.stringify(post));
-      // window.location.href = '../html/userInrollForm.html';
-      alert("Applied Sucessfully")
-      window.location.href = '../html/jobportal.html'
+      window.location.href = '../html/userInrollForm.html';
     });
   } else {
     console.warn("Job not found for id:", id);

@@ -22,60 +22,308 @@ body {
 }
 
 section {
-  padding: 0 4%;
   width: 100%;
 }
+
 :root {
-  --red: red;
-  --red: rgb(212, 3, 3);
-  --text-color: rgb(82, 82, 82);
+  --primary: #088395;
+  --secondary: #09637e;
+  --text-color: #7ab2b2;
+  --background: #ebf4f6;
 }
 
 .company {
-    width: 100%;
-    height: 100vh;
-    background: url(../images/company.webp);
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
+  height: 100vh;
+  display: flex;
+  width: 100%;
+  overflow-y: hidden;
 }
-.company h1{
-    font-size: 3rem;
-    width: 700px;
-    color: rgb(219, 214, 203);
+.left-container{
+  width: 250px;
+  max-width: 300px;
+  padding: 1rem 0;
+  background:white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px ;
+  position: relative;
 }
-.company p {
-    font-size: 16px;
-    color: rgb(219, 214, 203);
+.left-container h1 {
+  font-size: 30px;
+  color: black;
+  margin-left: 1rem;
 }
-.company button{
-    font-size: 18px;
-    padding: 1rem 2rem;
-    color: white;
-    font-weight: bold;
-    background: #ACBFA4;
-    border: 2px solid #ACBFA4;
-    cursor: pointer;
-    margin-bottom: 1rem;
+.left-container p {
+  padding: 1rem;
+  color: black;
+  font-weight: 500;
+  transition:  all .3s;
 }
-.company button:hover{
-    background: #68815e;
+.left-container p:hover{
+  background: var(--primary);
+  color: white;
+}
+.left-container p:active{
+  background: var(--background);
+  color: black;
+}
+.logout{
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  width: 100%;
 }
 
-@media(max-width:480px){
-  .company{
-    height: 100vh;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-
-  }
-  .company h1{
-    font-size: 30px;
-    width: 350px;
-  }
+.rightcontainer{
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  background: #ffffff;
 }
+.dataContainer{
+  display: flex;
+  justify-content: space-between;
+  padding:1rem 2rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  background: white;
+
+}
+.dataContainer h1 {
+  font-size: 35px;
+}
+button, .importdata {
+padding:.8rem 1rem;
+font-size: 16px;
+font-weight: 500;
+border: 1px solid var(--secondary);
+border-radius: 50px;
+background: white;
+color: var(--secondary);
+}
+.dataactive{
+  background: var(--secondary);
+  color:white;
+}
+.data-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0  ;  
+  gap: 2rem;
+  padding: 0 2rem;  
+}
+.data-container .box {
+  padding: 1rem;
+  text-align: center;
+  width: 50%;
+  height: 200px;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(194, 194, 194, 0.6);
+}
+.box h1 {
+  font-size: 30px;
+  padding: .5rem 0;
+  font-weight: 400;
+}
+.box h2{
+  font-size: 40px;
+  padding: .5rem 0;
+}
+
+.data-container .box:hover {
+  background: var(--primary);
+color: white;
+}
+
+
+/* joblist data-------------------------  */
+
+
+form {
+  max-width: 1800px;
+  width: 70%;
+  height: 100vh;
+  background: #fff;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(20%);
+  z-index: 999;
+}
+form h1 {
+  font-size: 30px;
+  font: bold;
+  text-align: center;
+}
+form input {
+  padding: 1rem;
+  border: 1px solid gray;
+  width: 100%;
+  border-radius: 10px;
+}
+form select {
+  width: 100%;
+  padding: 1rem;
+}
+form textarea {
+  padding: 1rem;
+  min-height: 120px;
+  max-height: 300px;
+  border: 1px solid gray;
+}
+
+#closebtn {
+  position: absolute;
+  top: 2%;
+  right: 13%;
+  text-align: right;
+  color: var(--background);
+}
+
+form button {
+  margin: 2rem 0;
+  border-radius: 5px;
+  padding: 1rem 3rem;
+  border: 1px solid black;
+  color: black;
+  background: transparent;
+}
+form button:active {
+  background: black;
+  color: white;
+}
+/*--------------------- selection-------------------------------------- */
+
+.selection {
+  width: 100%;
+  padding: 1rem 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    /* background: white ;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); */
+  /* border-radius: 5rem; */
+}
+.search {
+  padding:1rem;
+  border: 1px solid white;
+  box-shadow: 0px 0px 10px rgba(194, 194, 194, 0.6);
+  width: 400px;
+  border-radius: 10px ;
+  border: 1px solid rgba(194, 194, 194, 0.6);
+  display: flex;
+  align-items: center;
+
+}
+.selection input {
+  width: 100%;
+  background: transparent;
+  color: black;
+}
+::placeholder {
+  color: black;
+}
+
+select {
+  padding:  1rem;
+  border-radius: 0.1rem;
+  width: 400px;
+  background: white;
+  box-shadow: 0px 0px 10px rgba(194, 194, 194, 0.6);
+  border-radius: 10px ;
+  border: 1px solid rgba(194, 194, 194, 0.6);
+  
+}
+option {
+  border-radius: 0.2rem;
+  border: 1px solid gray;
+  background: fff;
+} 
+/* ---------------joblist------------------- */
+
+.joblist {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 6%;
+  gap: 20px;
+}
+.joblist div {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  gap: 20px;  
+}
+
+.joblist .description, .aboutcompany{
+  max-width: 900px;
+}
+
+.container-section{
+  display: none ;
+}
+.container-section.active{
+  display: block;
+}
+
+
+
+/* -----------------applicant section -------------------- */
+
+
+.form-show {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+.form-box thread {
+  text-align: left;
+}
+.form-box th {
+  background: var(--primary);
+  color: white;
+}
+.form-box th,
+.form-box2 td {
+  padding: 12px 15px;
+  border-bottom: 1px solid gray;
+}
+.form-box2 td {
+  border-bottom: 1px solid gray;
+}
+
+.form-box tbody tr:last-of-type {
+  border-bottom: 2px solid #4caf50;
+}
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#formBoxData tr {
+  padding: 12px 15px;
+  border-bottom: 1px solid gray;
+  font-weight: 500;
+}
+#formBoxData tr th {
+  padding: 12px 15px;
+  font-weight: normal;
+  font-size: 14px;
+}
+

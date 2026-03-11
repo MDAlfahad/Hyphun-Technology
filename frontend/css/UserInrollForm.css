@@ -10,6 +10,9 @@
   transition: 0.3s;
   scroll-behavior: smooth;
 }
+::-webkit-scrollbar{
+  display: none ;
+}
 
 body {
   max-width: 1800px;
@@ -27,7 +30,7 @@ section {
 }
 
 .form {
-  width: 100%;
+  width: 80%;
   height: 100vh;
   overflow-y: auto;
   line-height: 20px;
